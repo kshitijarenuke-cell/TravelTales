@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>TravelTales - Splash Screen</title>
+<!-- Tailwind CSS CDN -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Google Fonts: Plus Jakarta Sans -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+          },
+          colors: {
+            brand: {
+              teal: '#1b4d47',
+              darkTeal: '#164e47',
+            }
+          }
+        }
+      }
+    }
+  </script>
+<style data-purpose="base-layout">
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: #0b1319;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      -webkit-font-smoothing: antialiased;
+    }
+  </style>
+</head>
+<body>
+<!-- BEGIN: MobileFrameContainer -->
+<!-- Target Dimensions: 390px x 844px iPhone iOS standard view -->
+<div class="relative w-[390px] h-[844px] overflow-hidden rounded-[48px] shadow-2xl bg-black border-[6px] border-neutral-900 select-none flex flex-col justify-between" data-purpose="device-viewport">
+<!-- Full-Bleed Authentic Landscape Photo Background -->
+<img alt="Scenic Alpine Lake Wanderlust Background" class="absolute inset-0 w-full h-full object-cover z-0 pointer-events-none" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAwWFqXr816bWnBMaQaFtwJJR9_mRStMsOoOmAN-Ty7gBJeDGNKyRtPDZUMbEjYs44J4cvV29l9oA4wZOgSa3PF_ZJ26yJbUdZQ0Zitt0pbEI4-NLNKVdtBf5ofAIW7qp-ABv2EGh54725wJX_fi_SyXt0IP0fTI_u9rW5jd10_KHUuB0nhhg54OXW6tL-CDJnt-5MZw0GatP2ahC_x8hJMI5nQkTO3P2jy_94XK3Jbz6s2Kbh5sqzsWA"/>
+<!-- Soft Dark Vertical Gradient Overlay for Legibility & Contrast -->
+<div class="absolute inset-0 bg-gradient-to-b from-black/50 via-black/20 to-black/85 pointer-events-none z-[1]"></div>
+<div class="absolute inset-0 bg-radial-gradient from-transparent via-transparent to-black/40 pointer-events-none z-[1]"></div>
+<!-- BEGIN: TopStatusBar -->
+<header class="relative z-10 w-full pt-3.5 px-7 flex items-center justify-between text-white text-sm font-semibold tracking-tight" data-purpose="status-bar">
+<!-- iOS Clock -->
+<span>9:41</span>
+<!-- Sensor Notch / Dynamic Island Simulation -->
+<div class="w-24 h-4 bg-black/50 backdrop-blur-md rounded-full -mt-0.5"></div>
+<!-- System Icons: Cellular, Wifi, Battery -->
+<div class="flex items-center space-x-1.5" data-purpose="system-icons">
+<!-- Cellular Signal -->
+<svg class="w-4 h-4 fill-current" viewbox="0 0 24 24">
+<rect height="5" rx="0.75" width="3" x="2" y="16"></rect>
+<rect height="9" rx="0.75" width="3" x="7" y="12"></rect>
+<rect height="13" rx="0.75" width="3" x="12" y="8"></rect>
+<rect height="17" rx="0.75" width="3" x="17" y="4"></rect>
+</svg>
+<!-- Wi-Fi -->
+<svg class="w-4 h-4 fill-current" viewbox="0 0 24 24">
+<path d="M12 4C7.31 4 3.07 5.9 0 8.98L12 21 24 8.98C20.93 5.9 16.69 4 12 4zm0 3.3c3.78 0 7.21 1.5 9.73 3.96L12 19.12 2.27 11.26C4.79 8.8 8.22 7.3 12 7.3z"></path>
+</svg>
+<!-- Battery -->
+<div class="w-5 h-2.5 border border-white/80 rounded-sm p-0.5 flex items-center">
+<div class="bg-white h-full w-3/4 rounded-2xs"></div>
+</div>
+</div>
+</header>
+<!-- END: TopStatusBar -->
+<!-- BEGIN: BrandIdentitySection -->
+<section class="relative z-10 flex flex-col items-center justify-center -mt-6 px-6 text-center" data-purpose="brand-logo-and-tagline">
+<!-- Modern Line-Art Mountain Logo SVG -->
+<div class="w-20 h-20 mb-3 flex items-center justify-center drop-shadow-lg">
+<svg class="w-16 h-16 text-white" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewbox="0 0 48 48">
+<!-- Central Primary Peak -->
+<polygon points="24 6 39 38 9 38"></polygon>
+<!-- Foreground Intersecting Ridge Peak -->
+<polygon points="17 20 31 38 3 38"></polygon>
+<!-- Inner Ridge Detail Lines -->
+<polyline points="24 6 27 24 39 38"></polyline>
+<line x1="17" x2="21" y1="20" y2="38"></line>
+</svg>
+</div>
+<!-- App Title -->
+<h1 class="text-[34px] font-bold tracking-tight text-white drop-shadow-md leading-none mb-2.5">
+  TravelTales
+</h1>
+<!-- App Tagline -->
+<p class="text-[12px] font-semibold tracking-[0.24em] uppercase text-white/90 drop-shadow-sm">
+  Plan <span class="mx-1.5 text-white/50">·</span> Explore <span class="mx-1.5 text-white/50">·</span> Experience
+</p>
+</section>
+<!-- END: BrandIdentitySection -->
+<!-- BEGIN: BottomActionSection -->
+<section class="relative z-10 w-full px-7 pb-4 flex flex-col items-center gap-3.5" data-purpose="user-actions">
+<!-- Primary Get Started Button -->
+<button class="w-full h-[54px] bg-brand-teal hover:bg-brand-darkTeal active:scale-[0.98] transition duration-200 text-white font-semibold text-[16px] rounded-2xl shadow-xl shadow-black/40 border border-white/10 flex items-center justify-center tracking-wide" data-purpose="get-started-button" type="button">
+  Get Started
+</button>
+<!-- Secondary Login Option -->
+<button class="text-sm font-normal text-white/90 hover:text-white transition tracking-normal py-1 drop-shadow-sm" data-purpose="login-link" type="button">
+  Already have an account? <span class="font-semibold text-white underline underline-offset-4">Log In</span>
+</button>
+<!-- iOS Home Indicator Bar -->
+<div class="w-32 h-1 bg-white/70 rounded-full mt-2" data-purpose="home-indicator"></div>
+</section>
+<!-- END: BottomActionSection -->
+</div>
+<!-- END: MobileFrameContainer -->
+</body></html>

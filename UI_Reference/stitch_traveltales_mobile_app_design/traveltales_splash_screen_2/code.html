@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>TravelTales - Splash Screen</title>
+<!-- Tailwind CSS CDN -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Google Fonts: Plus Jakarta Sans -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+          },
+          colors: {
+            brand: {
+              teal: '#1F5F5B',
+              darkTeal: '#164845',
+            }
+          }
+        }
+      }
+    }
+  </script>
+<style data-purpose="base-layout">
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: #0b1319;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      -webkit-font-smoothing: antialiased;
+    }
+  </style>
+<style data-purpose="visual-effects">/* Subtle background image overlay & vignette */
+.bg-splash-image {
+    background-image: url(https://lh3.googleusercontent.com/aida-public/AB6AXuBsZuXKtsZpQNl8D34C4nJbSySmY2i5IBv2kvTj2AaRYpAXYRLuVijbS-YoBstiBnkKG8UV5Lxo58RuWdkHpKbVjjM_ik_-TKFyzwmBZU3M5SuDwnjYF-N5sr2raOxffQjTdEZr_0_oK9ShH1WpeyHC9J_96TnW4Q8LWwCCDlUHZqmHFLheNjddbxBr7yD5pQz6f-XFkfuc2YqhYLS9ZJICltnrl9HW9gT7n1ghkMCxRAJSiI56PGNAqw);
+    background-size: cover;
+    background-position: center bottom
+    }</style>
+</head>
+<body>
+<!-- BEGIN: MobileFrameContainer -->
+<!-- Target Dimensions: 390px x 844px iPhone iOS standard view -->
+<div class="relative w-[390px] h-[844px] overflow-hidden rounded-[48px] shadow-2xl bg-black border-[6px] border-neutral-900 select-none flex flex-col justify-between" data-purpose="device-viewport">
+<!-- Background Image Layer with Atmospheric Gradients -->
+<div class="absolute inset-0 bg-splash-image z-0 pointer-events-none"></div>
+<!-- Top & Bottom Gradient Shadows for pristine contrast -->
+<div class="absolute inset-0 bg-gradient-to-b from-black/50 via-transparent to-black/80 pointer-events-none z-[1]"></div>
+<div class="absolute inset-0 bg-radial-gradient from-transparent via-transparent to-black/30 pointer-events-none z-[1]"></div>
+<!-- BEGIN: TopStatusBar -->
+<header class="relative z-10 w-full pt-3 px-7 flex items-center justify-between text-white text-sm font-semibold tracking-tight" data-purpose="status-bar">
+<!-- iOS Clock -->
+<span>9:41</span>
+<!-- Sensor Notch / Dynamic Island Simulation -->
+<div class="w-24 h-4 bg-black/40 backdrop-blur-md rounded-full -mt-0.5"></div>
+<!-- System Icons: Cellular, Wifi, Battery -->
+<div class="flex items-center space-x-1.5" data-purpose="system-icons">
+<!-- Cellular Signal -->
+<svg class="w-4 h-4 fill-current" viewbox="0 0 24 24">
+<rect height="5" rx="0.75" width="3" x="2" y="16"></rect>
+<rect height="9" rx="0.75" width="3" x="7" y="12"></rect>
+<rect height="13" rx="0.75" width="3" x="12" y="8"></rect>
+<rect height="17" rx="0.75" width="3" x="17" y="4"></rect>
+</svg>
+<!-- Wi-Fi -->
+<svg class="w-4 h-4 fill-current" viewbox="0 0 24 24">
+<path d="M12 4C7.31 4 3.07 5.9 0 8.98L12 21 24 8.98C20.93 5.9 16.69 4 12 4zm0 3.3c3.78 0 7.21 1.5 9.73 3.96L12 19.12 2.27 11.26C4.79 8.8 8.22 7.3 12 7.3z"></path>
+</svg>
+<!-- Battery -->
+<div class="w-5 h-2.5 border border-white/80 rounded-sm p-0.5 flex items-center">
+<div class="bg-white h-full w-3/4 rounded-2xs"></div>
+</div>
+</div>
+</header>
+<!-- END: TopStatusBar -->
+<!-- BEGIN: BrandIdentitySection -->
+<section class="relative z-10 flex flex-col items-center justify-center pt-28 px-6 text-center" data-purpose="brand-logo-and-tagline">
+<!-- Mountain Line-Art Logo Icon -->
+<div class="w-20 h-20 mb-3 flex items-center justify-center drop-shadow-md">
+<svg class="w-16 h-16 text-white drop-shadow-sm" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" viewbox="0 0 64 64">
+<!-- Central Peak -->
+<polygon class="stroke-white" points="32 10 52 48 12 48"></polygon>
+<!-- Inner Peak Details -->
+<path class="stroke-white/70" d="M32 10 L40 48"></path>
+<!-- Secondary Overlapping Mountain Peaks -->
+<polygon class="stroke-white" points="18 26 34 50 2 50"></polygon>
+<polygon class="stroke-white" points="46 24 62 50 30 50"></polygon>
+<!-- Subtle Sun Arc in Peak Center -->
+<path class="stroke-white/80" d="M28 20 A 4 4 0 0 1 36 20" stroke-width="2"></path>
+</svg>
+</div>
+<!-- App Title -->
+<h1 class="text-[34px] font-bold tracking-tight text-white drop-shadow-md leading-none mb-2">
+        TravelTales
+      </h1>
+<!-- App Tagline -->
+<p class="text-sm font-medium tracking-[0.2em] uppercase text-white/90 drop-shadow-sm">
+        Plan <span class="mx-1 text-white/60">·</span> Explore <span class="mx-1 text-white/60">·</span> Experience
+      </p>
+</section>
+<!-- END: BrandIdentitySection -->
+<!-- BEGIN: BottomActionSection -->
+<section class="relative z-10 w-full px-7 pb-4 flex flex-col items-center gap-4" data-purpose="user-actions">
+<!-- Primary Get Started Button -->
+<button class="w-full h-14 bg-brand-teal hover:bg-brand-darkTeal active:scale-[0.98] transition duration-200 text-white font-semibold text-base rounded-2xl shadow-lg shadow-teal-950/40 flex items-center justify-center tracking-wide" data-purpose="get-started-button" type="button">
+        Get Started
+      </button>
+<!-- Secondary Login Option -->
+<button class="text-sm font-medium text-white/90 hover:text-white transition tracking-normal py-1" data-purpose="login-link" type="button">
+        Already have an account? <span class="font-semibold text-white underline underline-offset-4">Log In</span>
+</button>
+<!-- iOS Home Indicator Bar -->
+<div class="w-32 h-1 bg-white/70 rounded-full mt-2" data-purpose="home-indicator"></div>
+</section>
+<!-- END: BottomActionSection -->
+</div>
+<!-- END: MobileFrameContainer -->
+</body></html>

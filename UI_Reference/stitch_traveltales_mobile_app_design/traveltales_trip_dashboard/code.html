@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>TravelTales - Trip Dashboard</title>
+<!-- Tailwind CSS v3 with Plugins -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Tailwind Custom Configuration -->
+<script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              teal: '#1B4D3E',
+              'teal-dark': '#143B30',
+              'teal-light': '#E8F1EE',
+            },
+            canvas: '#F9FAF9',
+            charcoal: '#1E293B',
+            muted: '#64748B',
+            subtle: '#E2E8F0',
+          },
+          fontFamily: {
+            sans: ['-apple-system', 'BlinkMacSystemFont', '"SF Pro Text"', '"Plus Jakarta Sans"', 'Inter', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+<!-- Custom Styles for Mobile Device Wrapper and Polish -->
+<style data-purpose="device-styling">
+    body {
+      background-color: #ECEFF1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Plus Jakarta Sans", Inter, sans-serif;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* Fixed mobile frame container: 390px by 844px */
+    .mobile-screen-frame {
+      width: 390px;
+      height: 844px;
+      position: relative;
+      background-color: #F9FAF9;
+      box-shadow: 0 25px 60px -15px rgba(0, 0, 0, 0.22), 0 0 0 1px rgba(0, 0, 0, 0.08);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      border-radius: 44px;
+    }
+
+    /* Scrollable content area hidden scrollbars */
+    .no-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+    .no-scrollbar {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+  </style>
+</head>
+<body>
+<!-- BEGIN: MobileDeviceFrame -->
+<div class="mobile-screen-frame" data-purpose="mobile-viewport">
+<!-- BEGIN: iOSStatusBar -->
+<header class="w-full pt-3 px-7 flex justify-between items-center z-30 select-none bg-canvas" data-purpose="status-bar">
+<!-- Time Display -->
+<span class="text-[15px] font-semibold tracking-tight text-charcoal">9:41</span>
+<!-- Status Bar Icons -->
+<div class="flex items-center space-x-2 text-charcoal">
+<!-- Cellular Signal Icon -->
+<svg aria-label="Cellular" class="w-4 h-4 fill-current" viewbox="0 0 24 24">
+<rect height="5" rx="1" width="3" x="2" y="16"></rect>
+<rect height="9" rx="1" width="3" x="7" y="12"></rect>
+<rect height="13" rx="1" width="3" x="12" y="8"></rect>
+<rect height="17" rx="1" width="3" x="17" y="4"></rect>
+</svg>
+<!-- Wi-Fi Icon -->
+<svg aria-label="WiFi" class="w-4 h-4 fill-current" viewbox="0 0 24 24">
+<path d="M12 4c4.3 0 8.2 1.7 11.1 4.5l-2.1 2.1C18.6 8.3 15.5 7 12 7s-6.6 1.3-9 3.6L.9 8.5C3.8 5.7 7.7 4 12 4zm0 6c2.7 0 5.2 1.1 7 2.9l-2.1 2.1C15.6 13.8 13.9 13 12 13s-3.6.8-4.9 2.1L5 12.9C6.8 11.1 9.3 10 12 10zm0 6a2.5 2.5 0 100 5 2.5 2.5 0 000-5z"></path>
+</svg>
+<!-- Battery Icon -->
+<div aria-label="Battery" class="w-6 h-3 border border-charcoal/80 rounded-[4px] p-0.5 flex items-center relative">
+<div class="h-full w-full bg-charcoal rounded-[1.5px]"></div>
+<div class="w-0.5 h-1.5 bg-charcoal/80 absolute -right-1 rounded-r-sm top-[3px]"></div>
+</div>
+</div>
+</header>
+<!-- END: iOSStatusBar -->
+<!-- BEGIN: AppHeader -->
+<div class="px-5 pt-3 pb-2 flex items-center justify-between bg-canvas" data-purpose="app-header">
+<!-- Logo and Brand Name -->
+<div class="flex items-center space-x-2.5">
+<!-- Mountain Peak Icon -->
+<svg class="w-7 h-7 text-brand-teal stroke-current" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.3" viewbox="0 0 32 32">
+<path d="M3 24L12 8L17 17L21 11L29 24H3Z"></path>
+<path d="M12 8L15 13"></path>
+</svg>
+<span class="text-xl font-bold tracking-tight text-charcoal">TravelTales</span>
+</div>
+<!-- User Profile Avatar -->
+<div class="w-9 h-9 rounded-full overflow-hidden border border-subtle ring-1 ring-black/5 flex-shrink-0" data-purpose="user-avatar">
+<img alt="User Profile" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD1SayF-AU_dOViCMJyYrht02ZP3RaEo1kYzUJ5eufHtk0UpOzKzZ4SwpAC-uitmT_8_VCrB0ek9n7t6nNxNqcdNjJYQxAARbXzL2ph4FjX2RiC7Prhy00f9vl-PEE6QOMAeXRM2EapDuW0hqD2TLJf7yOavRGu6MhUTVn4bIXWd94A_1MuCQgnnqst-G0Gh3SRTd-sfLQVnv9WTVgiy2NZ72L_5eeMxE8cRKdJS9C4PXfd0QC4XUwtyw"/>
+</div>
+</div>
+<!-- END: AppHeader -->
+<!-- BEGIN: MainContentArea -->
+<main class="flex-1 overflow-y-auto px-5 pt-2 pb-6 space-y-5 no-scrollbar" data-purpose="scrollable-content">
+<!-- BEGIN: SearchBar -->
+<div class="relative" data-purpose="search-input">
+<span class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-muted">
+<svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.2" viewbox="0 0 24 24">
+<path d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</span>
+<input class="w-full pl-10 pr-4 py-2.5 bg-white text-sm text-charcoal placeholder-muted rounded-xl border border-subtle focus:outline-none focus:ring-1.5 focus:ring-brand-teal focus:border-brand-teal transition shadow-[0_1px_3px_rgba(0,0,0,0.03)]" placeholder="Search trips..." type="text"/>
+</div>
+<!-- END: SearchBar -->
+<!-- BEGIN: SectionHeader -->
+<section class="flex items-center justify-between pt-1" data-purpose="section-action-header">
+<h1 class="text-xl font-bold text-charcoal tracking-tight">My Trips</h1>
+<!-- Create Trip CTA Button -->
+<button class="inline-flex items-center space-x-1.5 bg-brand-teal hover:bg-brand-teal-dark active:scale-[0.98] text-white text-xs font-semibold px-3.5 py-2 rounded-lg shadow-sm transition" data-purpose="create-trip-button" type="button">
+<svg class="w-3.5 h-3.5 stroke-current" fill="none" stroke-linecap="round" stroke-width="2.8" viewbox="0 0 24 24">
+<line x1="12" x2="12" y1="5" y2="19"></line>
+<line x1="5" x2="19" y1="12" y2="12"></line>
+</svg>
+<span>Create Trip</span>
+</button>
+</section>
+<!-- END: SectionHeader -->
+<!-- BEGIN: TripList -->
+<section class="space-y-3.5" data-purpose="trip-cards-list">
+<!-- Trip Card 1: Bali -->
+<article class="bg-white rounded-2xl p-3 border border-subtle/80 shadow-[0_2px_8px_rgba(0,0,0,0.04)] flex items-center space-x-3.5 cursor-pointer active:bg-slate-50 transition" data-purpose="trip-card">
+<!-- Thumbnail Image -->
+<div class="w-[72px] h-[72px] rounded-xl overflow-hidden flex-shrink-0 bg-slate-100">
+<img alt="Bali coastal cliff" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCREDPE1kH2SZQi076UeyBpKHuqebZkRMBnj_1A5y39qNB4a_dP0PP-m1E-qbaZj7ugj1n7cCuwEIF0qLX6evRoa3PZI1ldSCFNW4vC5BQ9NXX3ChEPCwm5aWa8NsNeXxp6vQBmPR5uSk2KWnr3eNKkivofzZKPgOycSzUCVQriEVMOxUmNIX9BGGp0wx3UKQ1Xy6REx0MiWiC4u-892yz2Mz3emeXjnqOKESGniNJ8CORxt5Xzj2IaRA"/>
+</div>
+<!-- Trip Information -->
+<div class="flex-1 min-w-0">
+<h2 class="text-base font-bold text-charcoal truncate leading-tight">Bali Adventure</h2>
+<p class="text-xs text-muted mt-1 leading-snug">12 Apr - 20 Apr 2025</p>
+<p class="text-xs text-muted mt-0.5 font-medium flex items-center">
+<span>8 days</span>
+<span class="mx-1 text-slate-400 font-normal">·</span>
+<span>Indonesia</span>
+</p>
+</div>
+</article>
+<!-- Trip Card 2: Goa -->
+<article class="bg-white rounded-2xl p-3 border border-subtle/80 shadow-[0_2px_8px_rgba(0,0,0,0.04)] flex items-center space-x-3.5 cursor-pointer active:bg-slate-50 transition" data-purpose="trip-card">
+<!-- Thumbnail Image -->
+<div class="w-[72px] h-[72px] rounded-xl overflow-hidden flex-shrink-0 bg-slate-100">
+<img alt="Goa beach sunset" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCE1guouEgtXQDJRS5IjTN_b0I6CWSBMSHoZ6dtvxvm61PIssWY4YnKuLEIgdpPN7K6nvUJifRrXL7YDSH9qGyJ6lHULDP2pzp6AxppauH8WIMNTeRR3UJxrNsLuMygfbkb8o87F-SnaYJn3M6Q62_N3RyDBLfKucbxlrHDgPf78lQ0PlxD6EzoyLDnLloE-ConuCMyReeuJezS7rIZbrj8slwqdeLs_P13uekDAszyXrIgV3tq6b0L_A"/>
+</div>
+<!-- Trip Information -->
+<div class="flex-1 min-w-0">
+<h2 class="text-base font-bold text-charcoal truncate leading-tight">Goa Getaway</h2>
+<p class="text-xs text-muted mt-1 leading-snug">5 May - 10 May 2025</p>
+<p class="text-xs text-muted mt-0.5 font-medium flex items-center">
+<span>5 days</span>
+<span class="mx-1 text-slate-400 font-normal">·</span>
+<span>India</span>
+</p>
+</div>
+</article>
+<!-- Trip Card 3: Manali -->
+<article class="bg-white rounded-2xl p-3 border border-subtle/80 shadow-[0_2px_8px_rgba(0,0,0,0.04)] flex items-center space-x-3.5 cursor-pointer active:bg-slate-50 transition" data-purpose="trip-card">
+<!-- Thumbnail Image -->
+<div class="w-[72px] h-[72px] rounded-xl overflow-hidden flex-shrink-0 bg-slate-100">
+<img alt="Manali Himalayas mountains" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC4jhoG13FgY5xeeLWShwSLRd_oGUPcQIuD0AyAgaiWInRz52tKMxlJjE8Hgo-T6ndPur9UpDDB434eO4gAyMvo86Ze5Kc1d43Jc_wrDeupow2cRFEGARFbR2GsvETjYYxYQBA7bs6Qz5Vs-V7C4TpnxbXdSIJNd_6Uo9sne9uYqJAweIUe5qgHZStfrn2lEtSD2R39e3870-PoX2sXyrojl8n3Bps8wzqSasTwZENgDJYYpvikKqUYcA"/>
+</div>
+<!-- Trip Information -->
+<div class="flex-1 min-w-0">
+<h2 class="text-base font-bold text-charcoal truncate leading-tight">Manali Escape</h2>
+<p class="text-xs text-muted mt-1 leading-snug">15 Jun - 22 Jun 2025</p>
+<p class="text-xs text-muted mt-0.5 font-medium flex items-center">
+<span>7 days</span>
+<span class="mx-1 text-slate-400 font-normal">·</span>
+<span>India</span>
+</p>
+</div>
+</article>
+</section>
+<!-- END: TripList -->
+</main>
+<!-- END: MainContentArea -->
+<!-- BEGIN: BottomNavigationBar -->
+<nav class="bg-white border-t border-subtle/90 px-3 pt-2 pb-1 z-30" data-purpose="bottom-navigation-bar">
+<div class="grid grid-cols-5 items-center">
+<!-- Tab 1: Home (Active) -->
+<a aria-current="page" class="flex flex-col items-center justify-center py-1 group focus:outline-none" href="#home">
+<div class="relative flex items-center justify-center">
+<!-- Active Home Icon -->
+<svg class="w-5 h-5 text-brand-teal" fill="currentColor" viewbox="0 0 24 24">
+<path d="M12 2.1L2 10.5V21a1 1 0 001 1h6v-6h6v6h6a1 1 0 001-1V10.5L12 2.1z"></path>
+</svg>
+</div>
+<span class="text-[10px] mt-1 font-bold text-brand-teal">Home</span>
+</a>
+<!-- Tab 2: Itinerary -->
+<a class="flex flex-col items-center justify-center py-1 group focus:outline-none" href="#itinerary">
+<div class="relative flex items-center justify-center">
+<svg class="w-5 h-5 text-muted stroke-current" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24">
+<rect height="18" rx="2" ry="2" width="18" x="3" y="4"></rect>
+<line x1="16" x2="16" y1="2" y2="6"></line>
+<line x1="8" x2="8" y1="2" y2="6"></line>
+<line x1="3" x2="21" y1="10" y2="10"></line>
+</svg>
+</div>
+<span class="text-[10px] mt-1 font-medium text-muted">Itinerary</span>
+</a>
+<!-- Tab 3: Expenses -->
+<a class="flex flex-col items-center justify-center py-1 group focus:outline-none" href="#expenses">
+<div class="relative flex items-center justify-center">
+<svg class="w-5 h-5 text-muted stroke-current" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24">
+<rect height="14" rx="2" width="20" x="2" y="5"></rect>
+<line x1="2" x2="22" y1="10" y2="10"></line>
+</svg>
+</div>
+<span class="text-[10px] mt-1 font-medium text-muted">Expenses</span>
+</a>
+<!-- Tab 4: Guides -->
+<a class="flex flex-col items-center justify-center py-1 group focus:outline-none" href="#guides">
+<div class="relative flex items-center justify-center">
+<svg class="w-5 h-5 text-muted stroke-current" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24">
+<circle cx="12" cy="12" r="10"></circle>
+<polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"></polygon>
+</svg>
+</div>
+<span class="text-[10px] mt-1 font-medium text-muted">Guides</span>
+</a>
+<!-- Tab 5: Maps -->
+<a class="flex flex-col items-center justify-center py-1 group focus:outline-none" href="#maps">
+<div class="relative flex items-center justify-center">
+<svg class="w-5 h-5 text-muted stroke-current" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24">
+<polygon points="1 6 1 22 8 18 16 22 23 18 23 2 16 6 8 2 1 6"></polygon>
+<line x1="8" x2="8" y1="2" y2="18"></line>
+<line x1="16" x2="16" y1="6" y2="22"></line>
+</svg>
+</div>
+<span class="text-[10px] mt-1 font-medium text-muted">Maps</span>
+</a>
+</div>
+<!-- iOS Home Indicator -->
+<div class="w-full flex justify-center pt-2 pb-1.5" data-purpose="home-indicator">
+<div class="w-32 h-1 bg-charcoal/20 rounded-full"></div>
+</div>
+</nav>
+<!-- END: BottomNavigationBar -->
+</div>
+<!-- END: MobileDeviceFrame -->
+</body></html>

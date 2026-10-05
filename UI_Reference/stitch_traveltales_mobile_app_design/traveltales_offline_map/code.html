@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Offline Map - TravelTales</title>
+<!-- Tailwind CSS v3 with Plugins -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              teal: '#1a4e43',
+              darkTeal: '#133a32',
+              mint: '#EBF4F1',
+              lightGray: '#F9FAFB',
+              borderGray: '#F0F2F5',
+            }
+          },
+          fontFamily: {
+            sans: ['-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'Helvetica', 'Arial', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+<!-- Custom styling for precise iOS UI elements -->
+<style data-purpose="custom-layout">
+    body {
+      background-color: #e5e7eb;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      -webkit-font-smoothing: antialiased;
+    }
+    /* Mobile Device Frame styling */
+    .mobile-frame {
+      width: 390px;
+      height: 844px;
+      position: relative;
+      overflow: hidden;
+      background-color: #ffffff;
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+    }
+  </style>
+</head>
+<body>
+<!-- BEGIN: MobileDeviceFrame -->
+<main class="mobile-frame flex flex-col justify-between select-none" data-purpose="screen-12-offline-map">
+<!-- Top Content Container -->
+<div class="flex flex-col w-full">
+<!-- BEGIN: StatusBar -->
+<!-- iOS Status Bar with Time, Cellular, Wifi, and Battery indicators -->
+<div class="w-full pt-3 px-7 flex justify-between items-center text-xs font-semibold text-gray-900 tracking-tight" data-purpose="status-bar">
+<span>9:41</span>
+<div class="flex items-center space-x-1.5">
+<!-- Cellular Icon -->
+<svg class="w-4 h-3.5 fill-current" viewbox="0 0 17 12">
+<rect height="3" rx="0.5" width="2.5" x="0" y="9"></rect>
+<rect height="6" rx="0.5" width="2.5" x="3.5" y="6"></rect>
+<rect height="8.5" rx="0.5" width="2.5" x="7" y="3.5"></rect>
+<rect height="11.5" rx="0.5" width="2.5" x="10.5" y="0.5"></rect>
+</svg>
+<!-- Wifi Icon -->
+<svg class="w-3.5 h-3.5 fill-current" viewbox="0 0 16 12">
+<path d="M8 2.8c2.4 0 4.6.9 6.2 2.5l1.4-1.4C13.8 2 11 1 8 1 5 1 2.2 2 .4 3.9l1.4 1.4C3.4 3.7 5.6 2.8 8 2.8zm0 3.7c1.4 0 2.8.6 3.7 1.5l1.4-1.4C11.9 5.4 10 4.6 8 4.6c-2 0-3.9.8-5.1 2l1.4 1.4c.9-.9 2.3-1.5 3.7-1.5zm0 3.7c.8 0 1.5.3 2 .9l-2 2-2-2c.5-.6 1.2-.9 2-.9z"></path>
+</svg>
+<!-- Battery Icon -->
+<div class="w-6 h-3 border border-gray-900 rounded-sm p-0.5 flex items-center relative">
+<div class="h-full bg-gray-900 rounded-2xs w-4"></div>
+<div class="w-0.5 h-1.5 bg-gray-900 absolute -right-1 rounded-r-xs"></div>
+</div>
+</div>
+</div>
+<!-- END: StatusBar -->
+<!-- BEGIN: AppBar -->
+<!-- Navigation bar containing Back button and Title -->
+<header class="w-full px-5 pt-3 pb-3 flex items-center relative" data-purpose="navigation-header">
+<button aria-label="Go Back" class="w-8 h-8 -ml-1 flex items-center justify-start text-gray-800 hover:text-gray-600 focus:outline-none" type="button">
+<svg class="w-5 h-5 stroke-[2.5]" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+<path d="M15 19l-7-7 7-7" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</button>
+<h1 class="text-base font-bold text-gray-900 ml-1 tracking-tight">Offline Map</h1>
+</header>
+<!-- END: AppBar -->
+<!-- BEGIN: HeroIllustration -->
+<!-- Center illustration and instructional header -->
+<section class="flex flex-col items-center text-center px-6 pt-7 pb-8" data-purpose="hero-section">
+<!-- Folded Map with Pin Icon -->
+<div class="w-20 h-20 mb-5 flex items-center justify-center text-brand-teal" data-purpose="illustration-icon">
+<svg class="w-16 h-16" fill="none" stroke="currentColor" viewbox="0 0 64 64">
+<!-- Map fold outline -->
+<path d="M8 17.5L24 10L40 17.5L56 10V47.5L40 55L24 47.5L8 55V17.5Z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.6"></path>
+<!-- Fold lines -->
+<path d="M24 10V47.5" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.6"></path>
+<path d="M40 17.5V55" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.6"></path>
+<!-- Location Pin Marker placed centrally on right panel -->
+<path d="M40 24C40 21.7909 41.7909 20 44 20C46.2091 20 48 21.7909 48 24C48 27.5 44 32 44 32C44 32 40 27.5 40 24Z" fill="#1a4e43" stroke="#1a4e43" stroke-width="1.5"></path>
+<circle cx="44" cy="24" fill="white" r="1.3"></circle>
+</svg>
+</div>
+<h2 class="text-[17px] font-bold text-gray-900 mb-1.5 leading-snug tracking-tight">Download Offline Map</h2>
+<p class="text-[13px] text-gray-500 max-w-[270px] leading-relaxed">Save maps for offline use and explore even without internet.</p>
+</section>
+<!-- END: HeroIllustration -->
+<!-- BEGIN: SavedMapsSection -->
+<!-- List of previously saved / available offline map regions -->
+<section class="px-5 pt-1" data-purpose="saved-maps-section">
+<h3 class="text-sm font-bold text-gray-900 mb-3.5 tracking-tight">Saved Maps</h3>
+<div class="flex flex-col space-y-3" data-purpose="maps-list">
+<!-- Item 1: Bali (Full Map) -->
+<div class="flex items-center justify-between p-3.5 bg-white border border-gray-100 rounded-2xl shadow-xs" data-purpose="map-list-item">
+<div class="flex items-center space-x-3.5">
+<!-- Map Icon Container -->
+<div class="w-11 h-11 rounded-xl bg-brand-mint/70 flex items-center justify-center text-brand-teal flex-shrink-0">
+<svg class="w-5 h-5 stroke-[1.8]" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+<path d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</div>
+<div class="flex flex-col">
+<span class="text-sm font-semibold text-gray-900 leading-tight">Bali (Full Map)</span>
+<span class="text-[11.5px] text-gray-400 font-normal mt-1">120 MB · Expires in 30 days</span>
+</div>
+</div>
+<!-- Download / Action Button -->
+<button aria-label="Download Bali Map" class="w-8 h-8 flex items-center justify-center text-gray-700 hover:text-brand-teal transition-colors" type="button">
+<svg class="w-5 h-5 stroke-[1.8]" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+<path d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</button>
+</div>
+<!-- Item 2: Goa -->
+<div class="flex items-center justify-between p-3.5 bg-white border border-gray-100 rounded-2xl shadow-xs" data-purpose="map-list-item">
+<div class="flex items-center space-x-3.5">
+<!-- Map Icon Container -->
+<div class="w-11 h-11 rounded-xl bg-brand-mint/70 flex items-center justify-center text-brand-teal flex-shrink-0">
+<svg class="w-5 h-5 stroke-[1.8]" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+<path d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</div>
+<div class="flex flex-col">
+<span class="text-sm font-semibold text-gray-900 leading-tight">Goa</span>
+<span class="text-[11.5px] text-gray-400 font-normal mt-1">45 MB · Expires in 30 days</span>
+</div>
+</div>
+<!-- Download / Action Button -->
+<button aria-label="Download Goa Map" class="w-8 h-8 flex items-center justify-center text-gray-700 hover:text-brand-teal transition-colors" type="button">
+<svg class="w-5 h-5 stroke-[1.8]" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+<path d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</button>
+</div>
+<!-- Item 3: Manali -->
+<div class="flex items-center justify-between p-3.5 bg-white border border-gray-100 rounded-2xl shadow-xs" data-purpose="map-list-item">
+<div class="flex items-center space-x-3.5">
+<!-- Map Icon Container -->
+<div class="w-11 h-11 rounded-xl bg-brand-mint/70 flex items-center justify-center text-brand-teal flex-shrink-0">
+<svg class="w-5 h-5 stroke-[1.8]" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+<path d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</div>
+<div class="flex flex-col">
+<span class="text-sm font-semibold text-gray-900 leading-tight">Manali</span>
+<span class="text-[11.5px] text-gray-400 font-normal mt-1">60 MB · Expires in 30 days</span>
+</div>
+</div>
+<!-- Download / Action Button -->
+<button aria-label="Download Manali Map" class="w-8 h-8 flex items-center justify-center text-gray-700 hover:text-brand-teal transition-colors" type="button">
+<svg class="w-5 h-5 stroke-[1.8]" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+<path d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</button>
+</div>
+</div>
+</section>
+<!-- END: SavedMapsSection -->
+</div>
+<!-- BEGIN: BottomActionArea -->
+<!-- Primary action button and iOS Home Indicator bar -->
+<footer class="w-full px-5 pb-3 flex flex-col items-center bg-white" data-purpose="bottom-bar">
+<!-- Main Action Button -->
+<button class="w-full h-12 bg-brand-teal hover:bg-brand-darkTeal active:scale-[0.99] text-white font-medium text-sm rounded-xl flex items-center justify-center shadow-sm transition duration-150" type="button">
+        Download New Map
+      </button>
+<!-- iOS Home Indicator -->
+<div class="w-32 h-1 bg-gray-900 rounded-full mt-5 mb-1.5" data-purpose="home-indicator"></div>
+</footer>
+<!-- END: BottomActionArea -->
+</main>
+<!-- END: MobileDeviceFrame -->
+</body></html>

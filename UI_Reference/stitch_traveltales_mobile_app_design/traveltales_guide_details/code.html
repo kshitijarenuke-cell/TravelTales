@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>TravelTales - Guide Details</title>
+<!-- Tailwind CSS v3 CDN with forms and container-queries plugins -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              teal: '#164e43',
+              tealHover: '#123f36',
+              lightTeal: '#e8f2ef',
+              textDark: '#1a1f2c',
+              muted: '#64748b'
+            }
+          },
+          fontFamily: {
+            sans: ['-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'Helvetica', 'Arial', 'sans-serif']
+          }
+        }
+      }
+    }
+  </script>
+<!-- Custom Mobile Viewport Styles -->
+<style data-purpose="layout-frame">
+    body {
+      background-color: #f1f5f9;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      -webkit-font-smoothing: antialiased;
+    }
+    .mobile-screen {
+      width: 390px;
+      height: 844px;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+    }
+  </style>
+</head>
+<body>
+<!-- BEGIN: MobileContainer -->
+<div class="mobile-screen bg-white rounded-[44px] flex flex-col justify-between border-[6px] border-slate-900 select-none relative" data-purpose="mobile-viewport">
+<!-- Scrollable Content Wrapper -->
+<div class="flex-1 overflow-y-auto overflow-x-hidden scrollbar-none" data-purpose="scrollable-content">
+<!-- BEGIN: HeroSection -->
+<section class="relative w-full h-[270px]" data-purpose="hero-image-header">
+<!-- Hero Background Image (Uluwatu Sunset Temple) -->
+<img alt="Uluwatu Temple Sunset over Ocean Cliff" class="w-full h-full object-cover rounded-b-[24px]" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDonZ_V5oiGHY-_C5YzapxVR0ae_BOJz2RaIlO0veiQ9QO19nRPqdzJTACOstHbS760HqrTPNUyCL0KH2bp_Be9ol3oTCF2Q3ItSx0Cdb458mNbinGLUNpgoS2qNJK2XiXh__qtxwlO6qT7-wCPOMxiJvxHHaavfTn81Kq7vZSp8MnEAqI0D5NRlKr3eG-GZ1ubWiCedrLwNWmpFAr2YETO7O0oMx3X5pxtHhQpIqtxURN3eVHGQaeZnA"/>
+<!-- Top Status Bar Overlay -->
+<div class="absolute top-0 left-0 right-0 pt-3 px-7 flex justify-between items-center text-white z-20" data-purpose="status-bar">
+<span class="text-[14px] font-semibold tracking-tight">9:41</span>
+<!-- Status Bar Right Icons (Cellular, Wifi, Battery) -->
+<div class="flex items-center space-x-1.5 text-white">
+<svg class="w-4 h-4 fill-current" viewbox="0 0 24 24">
+<path d="M12 3c-4.97 0-9 4.03-9 9 0 2.12.74 4.07 1.97 5.61L4.35 18.25c-.2.2-.2.51 0 .71.2.2.51.2.71 0l.74-.74C7.39 19.34 9.58 20 12 20c4.97 0 9-4.03 9-9s-4.03-9-9-9zm0 15c-3.31 0-6-2.69-6-6s2.69-6 6-6 6 2.69 6 6-2.69 6-6 6z" opacity="0.3"></path>
+<path d="M2 17h2v4H2v-4zm4-4h2v8H6v-8zm4-4h2v12h-2V9zm4-4h2v16h-2V5zm4-3h2v19h-2V2z"></path>
+</svg>
+<svg class="w-4 h-4 fill-current" viewbox="0 0 24 24">
+<path d="M12 4C7.31 4 3.07 5.9 0 8.98L12 21 24 8.98C20.93 5.9 16.69 4 12 4zm0 3.5c3.5 0 6.72 1.34 9.17 3.53L12 19.9 2.83 11.03C5.28 8.84 8.5 7.5 12 7.5z"></path>
+</svg>
+<!-- iOS Battery Icon -->
+<div class="w-5 h-2.5 border border-white rounded-[3px] p-[1px] flex items-center">
+<div class="h-full w-full bg-white rounded-[1.5px]"></div>
+</div>
+</div>
+</div>
+<!-- Floating Navigation Header Buttons -->
+<div class="absolute top-12 left-0 right-0 px-5 flex justify-between items-center z-10" data-purpose="floating-nav-buttons">
+<!-- Back Button -->
+<button aria-label="Go back" class="w-9 h-9 rounded-full bg-white/80 backdrop-blur-md flex items-center justify-center shadow-sm active:scale-95 transition-transform text-slate-800 hover:bg-white" type="button">
+<svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2.5" viewbox="0 0 24 24">
+<path d="M15 19l-7-7 7-7" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</button>
+<!-- Favorite / Heart Button -->
+<button aria-label="Add to favorites" class="w-9 h-9 rounded-full bg-white/80 backdrop-blur-md flex items-center justify-center shadow-sm active:scale-95 transition-transform text-slate-700 hover:text-red-500 hover:bg-white" type="button">
+<svg class="w-5 h-5 fill-transparent stroke-current" stroke-width="2" viewbox="0 0 24 24">
+<path d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</button>
+</div>
+</section>
+<!-- END: HeroSection -->
+<!-- BEGIN: ContentBody -->
+<main class="px-5 pt-4 pb-2" data-purpose="guide-details-body">
+<!-- Title and Rating -->
+<div class="mb-3">
+<h1 class="text-[20px] font-bold text-slate-900 tracking-tight leading-snug">
+            Uluwatu Sunset Tour
+          </h1>
+<!-- Rating Row -->
+<div class="flex items-center gap-1.5 mt-1">
+<svg class="w-4 h-4 text-amber-500 fill-amber-500" viewbox="0 0 20 20">
+<path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+</svg>
+<span class="text-[13px] font-bold text-slate-900">4.8</span>
+<span class="text-[13px] text-slate-500 font-normal">(1.2k reviews)</span>
+</div>
+</div>
+<!-- Tag Chips Row -->
+<div class="flex flex-wrap gap-2 mb-4" data-purpose="tag-chips">
+<span class="px-3 py-1 bg-slate-100/90 text-slate-600 text-[12px] font-medium rounded-full">
+            Adventure
+          </span>
+<span class="px-3 py-1 bg-slate-100/90 text-slate-600 text-[12px] font-medium rounded-full">
+            Nature
+          </span>
+<span class="px-3 py-1 bg-slate-100/90 text-slate-600 text-[12px] font-medium rounded-full">
+            Culture
+          </span>
+</div>
+<!-- Price Section -->
+<div class="mb-5" data-purpose="price-info">
+<p class="text-[15px] font-bold text-slate-900">
+            ₹ 1,500 <span class="text-slate-500 text-[13px] font-normal">per person</span>
+</p>
+</div>
+<!-- Description Section -->
+<section class="mb-5" data-purpose="description-section">
+<h2 class="text-[14px] font-bold text-slate-900 mb-1.5">
+            Description
+          </h2>
+<p class="text-[13px] text-slate-600 leading-relaxed">
+            Experience the breathtaking sunset at Uluwatu Temple, one of Bali's most iconic spots. This tour includes temple visit, local guide and more.
+          </p>
+</section>
+<!-- What's Included Section -->
+<section class="mb-4" data-purpose="included-features">
+<h2 class="text-[14px] font-bold text-slate-900 mb-2.5">
+            What's Included
+          </h2>
+<ul class="space-y-2">
+<!-- Feature Item 1 -->
+<li class="flex items-center space-x-2.5 text-[13px] text-slate-700">
+<svg class="w-4 h-4 text-emerald-600 flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2.5" viewbox="0 0 24 24">
+<path d="M4.5 12.75l6 6 9-13.5" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+<span>Local guide</span>
+</li>
+<!-- Feature Item 2 -->
+<li class="flex items-center space-x-2.5 text-[13px] text-slate-700">
+<svg class="w-4 h-4 text-emerald-600 flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2.5" viewbox="0 0 24 24">
+<path d="M4.5 12.75l6 6 9-13.5" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+<span>Temple entry fee</span>
+</li>
+<!-- Feature Item 3 -->
+<li class="flex items-center space-x-2.5 text-[13px] text-slate-700">
+<svg class="w-4 h-4 text-emerald-600 flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2.5" viewbox="0 0 24 24">
+<path d="M4.5 12.75l6 6 9-13.5" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+<span>Sunset viewing point</span>
+</li>
+<!-- Feature Item 4 -->
+<li class="flex items-center space-x-2.5 text-[13px] text-slate-700">
+<svg class="w-4 h-4 text-emerald-600 flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2.5" viewbox="0 0 24 24">
+<path d="M4.5 12.75l6 6 9-13.5" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+<span>Hotel pick-up &amp; drop-off</span>
+</li>
+</ul>
+</section>
+</main>
+<!-- END: ContentBody -->
+</div>
+<!-- BEGIN: BottomActionArea -->
+<footer class="px-5 pt-3 pb-6 bg-white border-t border-slate-100 flex flex-col items-center gap-3" data-purpose="bottom-action-bar">
+<!-- Full-Width Book Now Button -->
+<button class="w-full h-[50px] bg-brand-teal hover:bg-brand-tealHover active:scale-[0.99] text-white font-medium text-[15px] rounded-xl flex items-center justify-center shadow-sm transition-all duration-150" type="button">
+        Book Now
+      </button>
+<!-- iOS Home Indicator Bar -->
+<div class="w-32 h-1 bg-slate-900 rounded-full mt-1"></div>
+</footer>
+<!-- END: BottomActionArea -->
+</div>
+<!-- END: MobileContainer -->
+</body></html>

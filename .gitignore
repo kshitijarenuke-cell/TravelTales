@@ -1,0 +1,17 @@
+.env
+*.env
+!.env.example
+backend/.env
+backend/.env.*
+!backend/.env.example
+firebase-service-account.json
+firebase-service-account.json.json
+backend/firebase-service-account.json
+backend/firebase-service-account.json.json
+*serviceAccount*.json
+backend/node_modules/
+.DS_Store
+*.pem
+*.key
+*.cert
+

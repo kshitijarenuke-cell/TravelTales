@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>TravelTales - Local Guides</title>
+<!-- Tailwind CSS CDN with forms and container queries -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            tealBrand: '#1A4D3E',
+            tealBrandLight: '#E8F1EE',
+            charcoal: '#1E232A',
+            slateGray: '#707784',
+            lightBorder: '#E5E9EB',
+            cardBg: '#FFFFFF',
+            subtleGray: '#F8FAFC'
+          },
+          fontFamily: {
+            sans: ['-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'Helvetica', 'Arial', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+<!-- BEGIN: CustomStyles -->
+<style data-purpose="scrollbar-and-helpers">
+    /* Hide scrollbars for clean mobile appearance */
+    .no-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+    .no-scrollbar {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+    /* Mobile frame container lock */
+    .mobile-frame {
+      width: 390px;
+      height: 844px;
+      max-width: 390px;
+      max-height: 844px;
+    }
+  </style>
+<!-- END: CustomStyles -->
+</head>
+<body class="bg-slate-200 min-h-screen flex items-center justify-center p-0 md:p-4 font-sans select-none antialiased">
+<!-- BEGIN: MobileContainer -->
+<main class="mobile-frame bg-white flex flex-col relative overflow-hidden shadow-2xl rounded-[44px] border-[6px] border-slate-900/10">
+<!-- BEGIN: StatusBar -->
+<header class="w-full pt-3 px-7 flex justify-between items-center z-20 shrink-0 bg-white" data-purpose="ios-status-bar">
+<!-- Time -->
+<span class="text-[15px] font-semibold text-charcoal tracking-tight">9:41</span>
+<!-- Right Status Icons -->
+<div class="flex items-center space-x-2">
+<!-- Cellular Signal Icon -->
+<svg class="w-4 h-3.5 fill-current text-charcoal" viewbox="0 0 17 12">
+<rect height="3.5" rx="0.6" width="2.5" x="0" y="8.5"></rect>
+<rect height="6" rx="0.6" width="2.5" x="4.5" y="6"></rect>
+<rect height="9" rx="0.6" width="2.5" x="9" y="3"></rect>
+<rect height="12" rx="0.6" width="2.5" x="13.5" y="0"></rect>
+</svg>
+<!-- Wi-Fi Icon -->
+<svg class="w-4 h-3.5 fill-current text-charcoal" viewbox="0 0 16 12">
+<path d="M8 2.8c2.5 0 4.8 1 6.5 2.6.3.3.3.8 0 1.1l-1.1 1.1c-.3.3-.8.3-1.1 0-1.2-1.1-2.7-1.8-4.3-1.8s-3.1.7-4.3 1.8c-.3.3-.8.3-1.1 0L1.5 6.5c-.3-.3-.3-.8 0-1.1C3.2 3.8 5.5 2.8 8 2.8zm0 4.4c1.4 0 2.7.6 3.6 1.6.3.3.3.8 0 1.1l-3.1 3.1c-.3.3-.8.3-1.1 0L4.4 9.9c-.3-.3-.3-.8 0-1.1.9-1 2.2-1.6 3.6-1.6z"></path>
+</svg>
+<!-- Battery Icon -->
+<div class="flex items-center">
+<div class="w-5 h-2.5 rounded-[4px] border border-charcoal/80 p-0.5 flex items-center">
+<div class="h-full w-full bg-charcoal rounded-[2px]"></div>
+</div>
+<div class="w-0.5 h-1 bg-charcoal/80 rounded-r-[1px] ml-[0.5px]"></div>
+</div>
+</div>
+</header>
+<!-- END: StatusBar -->
+<!-- BEGIN: TopBar -->
+<section class="px-5 pt-3 pb-2 flex items-center relative shrink-0 bg-white" data-purpose="screen-header">
+<!-- Back Chevron Button -->
+<button aria-label="Go Back" class="p-1.5 -ml-1 text-charcoal hover:bg-slate-100 rounded-full transition-colors" type="button">
+<svg class="w-5 h-5 stroke-[2.5] stroke-current" fill="none" viewbox="0 0 24 24">
+<path d="M15 19l-7-7 7-7" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</button>
+<!-- Screen Title -->
+<h1 class="text-lg font-bold text-charcoal ml-2">Local Guides</h1>
+</section>
+<!-- END: TopBar -->
+<!-- BEGIN: SearchBarSection -->
+<section class="px-5 pt-1 pb-3 shrink-0 bg-white" data-purpose="search-input-wrapper">
+<div class="relative flex items-center">
+<!-- Search Glass Icon -->
+<span class="absolute left-3.5 text-slateGray pointer-events-none">
+<svg class="w-4 h-4 stroke-[2.2] stroke-current" fill="none" viewbox="0 0 24 24">
+<path d="M21 21l-4.35-4.35m1.85-5.65a7 7 0 11-14 0 7 7 0 0114 0z" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</span>
+<!-- Search Input Field -->
+<input class="w-full pl-10 pr-4 py-2.5 text-sm bg-white border border-lightBorder rounded-xl placeholder-slateGray/70 text-charcoal focus:outline-none focus:border-tealBrand focus:ring-1 focus:ring-tealBrand transition-colors shadow-sm" placeholder="Search guides or places..." type="text"/>
+</div>
+</section>
+<!-- END: SearchBarSection -->
+<!-- BEGIN: CategoryFilters -->
+<section class="px-5 pb-3 shrink-0 bg-white" data-purpose="category-chips">
+<div class="flex items-center space-x-2 overflow-x-auto no-scrollbar py-0.5">
+<!-- Active Chip: All -->
+<button class="px-4 py-1.5 rounded-full text-xs font-medium bg-tealBrand text-white shadow-sm shrink-0 transition-transform active:scale-95" type="button">
+          All
+        </button>
+<!-- Inactive Chip: Food -->
+<button class="px-3.5 py-1.5 rounded-full text-xs font-medium bg-subtleGray border border-lightBorder text-slateGray hover:text-charcoal shrink-0 transition-colors" type="button">
+          Food
+        </button>
+<!-- Inactive Chip: Culture -->
+<button class="px-3.5 py-1.5 rounded-full text-xs font-medium bg-subtleGray border border-lightBorder text-slateGray hover:text-charcoal shrink-0 transition-colors" type="button">
+          Culture
+        </button>
+<!-- Inactive Chip: Adventure -->
+<button class="px-3.5 py-1.5 rounded-full text-xs font-medium bg-subtleGray border border-lightBorder text-slateGray hover:text-charcoal shrink-0 transition-colors" type="button">
+          Adventure
+        </button>
+<!-- Inactive Chip: Nature -->
+<button class="px-3.5 py-1.5 rounded-full text-xs font-medium bg-subtleGray border border-lightBorder text-slateGray hover:text-charcoal shrink-0 transition-colors" type="button">
+          Nature
+        </button>
+</div>
+</section>
+<!-- END: CategoryFilters -->
+<!-- BEGIN: GuideListSection -->
+<section class="flex-1 overflow-y-auto px-5 space-y-3 pb-4 no-scrollbar" data-purpose="guide-recommendations-list">
+<!-- Card 1: Uluwatu Sunset Tour -->
+<article class="bg-cardBg rounded-2xl p-2.5 border border-lightBorder/80 flex items-center space-x-3.5 shadow-sm hover:shadow-md transition-shadow relative" data-purpose="guide-card">
+<!-- Thumbnail -->
+<div class="w-20 h-20 rounded-xl overflow-hidden shrink-0 bg-slate-100">
+<img alt="Uluwatu Temple Cliff Sunset" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCypsrj6iipq0VXibCqm_JlAp-Mj4tui7QNE8os2VatNxZuk-SnXlPSieFt6RYNKyMTOMvAMUUFx06vXF80FPyz4N44BNDvnuLV4gQNJaRSJURUFnz6sr1JLwf-hdPor7_Xgq0-5mutXXLbX3eeIKF-mYeqSZqGo5uW6-lkfLIFesPEqKkHOdXRcDxn5l50qHCnRvD0eTQGyMTIV6S9_9-2Q_YizORnW7L0KFzyuWcIMiKmQ9ol-ntORQ"/>
+</div>
+<!-- Details -->
+<div class="flex-1 min-w-0 pr-6">
+<h2 class="text-sm font-bold text-charcoal truncate">Uluwatu Sunset Tour</h2>
+<!-- Rating -->
+<div class="flex items-center space-x-1 mt-1">
+<svg class="w-3.5 h-3.5 text-amber-500 fill-current" viewbox="0 0 20 20">
+<path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+</svg>
+<span class="text-xs font-semibold text-charcoal">4.8</span>
+<span class="text-[11px] text-slateGray font-normal">(1.2k reviews)</span>
+</div>
+<!-- Price -->
+<p class="text-xs font-semibold text-charcoal mt-1.5">
+            ₹ 1,500 <span class="font-normal text-[11px] text-slateGray">per person</span>
+</p>
+</div>
+<!-- Heart Favorite Icon Button -->
+<button aria-label="Favorite Uluwatu Sunset Tour" class="absolute top-3.5 right-3 text-red-500 hover:scale-110 transition-transform" type="button">
+<svg class="w-5 h-5 stroke-[1.8] stroke-red-500 fill-none" viewbox="0 0 24 24">
+<path d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</button>
+</article>
+<!-- Card 2: Local Food Tour -->
+<article class="bg-cardBg rounded-2xl p-2.5 border border-lightBorder/80 flex items-center space-x-3.5 shadow-sm hover:shadow-md transition-shadow relative" data-purpose="guide-card">
+<!-- Thumbnail -->
+<div class="w-20 h-20 rounded-xl overflow-hidden shrink-0 bg-slate-100">
+<img alt="Balinese Culinary Food Spread" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBqVYzZGaZ6Ro76V0hT0c3TXue0j-jy00jORZxHpBn44R1HCuGkJq5l1M7-jfOKrtllCWow-Q3FbwBpZmoiyWRcXfzDmubcLcpNPXFjiYCHqTZqw5NvjCQCmsUgv9EI21CnRb9j--oAAHXHH1v2JPx_uoRFQYsGfoq5KACe-V1xlZ0baTlWrc2C1kkKInAl7gN5uzS2MhFMVE8tUj4QI0-vgDLMcftOT5TB4BxkYi7OqFA-Cd0cfswTgw"/>
+</div>
+<!-- Details -->
+<div class="flex-1 min-w-0 pr-6">
+<h2 class="text-sm font-bold text-charcoal truncate">Local Food Tour</h2>
+<!-- Rating -->
+<div class="flex items-center space-x-1 mt-1">
+<svg class="w-3.5 h-3.5 text-amber-500 fill-current" viewbox="0 0 20 20">
+<path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+</svg>
+<span class="text-xs font-semibold text-charcoal">4.7</span>
+<span class="text-[11px] text-slateGray font-normal">(856 reviews)</span>
+</div>
+<!-- Price -->
+<p class="text-xs font-semibold text-charcoal mt-1.5">
+            ₹ 1,200 <span class="font-normal text-[11px] text-slateGray">per person</span>
+</p>
+</div>
+<!-- Heart Favorite Icon Button -->
+<button aria-label="Favorite Local Food Tour" class="absolute top-3.5 right-3 text-red-500 hover:scale-110 transition-transform" type="button">
+<svg class="w-5 h-5 stroke-[1.8] stroke-red-500 fill-none" viewbox="0 0 24 24">
+<path d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</button>
+</article>
+<!-- Card 3: Bali Cultural Tour -->
+<article class="bg-cardBg rounded-2xl p-2.5 border border-lightBorder/80 flex items-center space-x-3.5 shadow-sm hover:shadow-md transition-shadow relative" data-purpose="guide-card">
+<!-- Thumbnail -->
+<div class="w-20 h-20 rounded-xl overflow-hidden shrink-0 bg-slate-100">
+<img alt="Balinese Temple Gate Shrine" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCKMRDPXtzo1_XmeNvXm3Kgpo7DfPwxq15ydxDkpi0RnidVfFTVubTwEBRQIvMsC5y1z3pXMe3rKprYzCTpdEGcaz6a00EoA0noyk2M9OXyvwj9ZF_KwO08sEJbNQ279XFqTddpE_tAisNAXRU5V3EZzW3rfWtT_K3P1ncCshaimyXTpRT4xakxmZWcblt2cOTFgVB9C92JTdVapxMcaLLKtP59dAn9trRnM595Msf5HN576tJqMU6Q5w"/>
+</div>
+<!-- Details -->
+<div class="flex-1 min-w-0 pr-6">
+<h2 class="text-sm font-bold text-charcoal truncate">Bali Cultural Tour</h2>
+<!-- Rating -->
+<div class="flex items-center space-x-1 mt-1">
+<svg class="w-3.5 h-3.5 text-amber-500 fill-current" viewbox="0 0 20 20">
+<path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+</svg>
+<span class="text-xs font-semibold text-charcoal">4.9</span>
+<span class="text-[11px] text-slateGray font-normal">(1.1k reviews)</span>
+</div>
+<!-- Price -->
+<p class="text-xs font-semibold text-charcoal mt-1.5">
+            ₹ 1,400 <span class="font-normal text-[11px] text-slateGray">per person</span>
+</p>
+</div>
+<!-- Heart Favorite Icon Button -->
+<button aria-label="Favorite Bali Cultural Tour" class="absolute top-3.5 right-3 text-red-500 hover:scale-110 transition-transform" type="button">
+<svg class="w-5 h-5 stroke-[1.8] stroke-red-500 fill-none" viewbox="0 0 24 24">
+<path d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</button>
+</article>
+<!-- Card 4: Hidden Beaches Tour -->
+<article class="bg-cardBg rounded-2xl p-2.5 border border-lightBorder/80 flex items-center space-x-3.5 shadow-sm hover:shadow-md transition-shadow relative" data-purpose="guide-card">
+<!-- Thumbnail -->
+<div class="w-20 h-20 rounded-xl overflow-hidden shrink-0 bg-slate-100">
+<img alt="Secluded Turquoise Beach and Cliffs" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAufDyfBWuV14iAB7KUVEOOJelIKU0WZ2tS2sArZpTVMDAYKSurClWdUDKCaRwI34Cqi6h2smVUJEFU1biSoWNDCpkm9qP8HuSBcNLZc84cDD4B5b_btQBS18SqLklsa-JiDhSc-5T9Ta8foper9Ed4S2DlhTPiLFwvx5AYL8jqZRDCQyi2W_JQ-yXJ1dYDUrknKHQFAAYyiWQyVmK_ZWQ3mj1ra18n3OlbMlRcRV4k7A7Cl0aJ45k30g"/>
+</div>
+<!-- Details -->
+<div class="flex-1 min-w-0 pr-6">
+<h2 class="text-sm font-bold text-charcoal truncate">Hidden Beaches Tour</h2>
+<!-- Rating -->
+<div class="flex items-center space-x-1 mt-1">
+<svg class="w-3.5 h-3.5 text-amber-500 fill-current" viewbox="0 0 20 20">
+<path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+</svg>
+<span class="text-xs font-semibold text-charcoal">4.6</span>
+<span class="text-[11px] text-slateGray font-normal">(732 reviews)</span>
+</div>
+<!-- Price -->
+<p class="text-xs font-semibold text-charcoal mt-1.5">
+            ₹ 1,400 <span class="font-normal text-[11px] text-slateGray">per person</span>
+</p>
+</div>
+<!-- Heart Favorite Icon Button -->
+<button aria-label="Favorite Hidden Beaches Tour" class="absolute top-3.5 right-3 text-red-500 hover:scale-110 transition-transform" type="button">
+<svg class="w-5 h-5 stroke-[1.8] stroke-red-500 fill-none" viewbox="0 0 24 24">
+<path d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</button>
+</article>
+</section>
+<!-- END: GuideListSection -->
+<!-- BEGIN: BottomNavigationBar -->
+<nav class="shrink-0 bg-white border-t border-lightBorder/80 px-4 pt-2.5 pb-6 flex items-center justify-around z-20" data-purpose="bottom-tab-bar">
+<!-- Nav Item 1: Home -->
+<a class="flex flex-col items-center space-y-1 text-slateGray hover:text-charcoal group transition-colors" href="#home">
+<svg class="w-5 h-5 stroke-[1.8] stroke-current group-hover:scale-105 transition-transform" fill="none" viewbox="0 0 24 24">
+<path d="M3 10.5l9-7.5 9 7.5v8.25a1.5 1.5 0 01-1.5 1.5H4.5A1.5 1.5 0 013 18.75V10.5z" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+<span class="text-[10px] font-medium tracking-tight">Home</span>
+</a>
+<!-- Nav Item 2: Itinerary -->
+<a class="flex flex-col items-center space-y-1 text-slateGray hover:text-charcoal group transition-colors" href="#itinerary">
+<svg class="w-5 h-5 stroke-[1.8] stroke-current group-hover:scale-105 transition-transform" fill="none" viewbox="0 0 24 24">
+<path d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 012.25-2.25h13.5A2.25 2.25 0 0121 7.5v11.25m-18 0A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75m-18 0v-7.5A2.25 2.25 0 015.25 9h13.5A2.25 2.25 0 0121 11.25v7.5" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+<span class="text-[10px] font-medium tracking-tight">Itinerary</span>
+</a>
+<!-- Nav Item 3: Expenses -->
+<a class="flex flex-col items-center space-y-1 text-slateGray hover:text-charcoal group transition-colors" href="#expenses">
+<svg class="w-5 h-5 stroke-[1.8] stroke-current group-hover:scale-105 transition-transform" fill="none" viewbox="0 0 24 24">
+<path d="M2.25 8.25h19.5M2.25 9h19.5m-16.5 5.25h6m-6 2.25h3m-3.75 3h15a2.25 2.25 0 002.25-2.25V6.75A2.25 2.25 0 0019.5 4.5h-15A2.25 2.25 0 002.25 6.75v10.5A2.25 2.25 0 004.5 19.5z" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+<span class="text-[10px] font-medium tracking-tight">Expenses</span>
+</a>
+<!-- Nav Item 4: Guides (ACTIVE) -->
+<a aria-current="page" class="flex flex-col items-center space-y-1 text-tealBrand group transition-colors" href="#guides">
+<!-- Highlighted / Active icon -->
+<div class="relative">
+<svg class="w-5 h-5 stroke-[2.2] stroke-tealBrand" fill="none" viewbox="0 0 24 24">
+<path d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</div>
+<span class="text-[10px] font-bold tracking-tight text-tealBrand">Guides</span>
+</a>
+<!-- Nav Item 5: Maps -->
+<a class="flex flex-col items-center space-y-1 text-slateGray hover:text-charcoal group transition-colors" href="#maps">
+<svg class="w-5 h-5 stroke-[1.8] stroke-current group-hover:scale-105 transition-transform" fill="none" viewbox="0 0 24 24">
+<path d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z" stroke-linecap="round" stroke-linejoin="round"></path>
+<path d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+<span class="text-[10px] font-medium tracking-tight">Maps</span>
+</a>
+</nav>
+<!-- END: BottomNavigationBar -->
+<!-- BEGIN: HomeIndicator -->
+<div class="absolute bottom-1.5 left-1/2 -translate-x-1/2 w-32 h-1 bg-charcoal/25 rounded-full z-30 pointer-events-none" data-purpose="ios-home-indicator"></div>
+<!-- END: HomeIndicator -->
+</main>
+<!-- END: MobileContainer -->
+</body></html>

@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>TravelTales - Loading State</title>
+<!-- Tailwind CSS v3 with Plugins -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Tailwind Configuration -->
+<script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              teal: '#155E54',
+              'teal-dark': '#0E3E37',
+              'teal-light': '#E6F0EE'
+            }
+          },
+          fontFamily: {
+            sans: ['-apple-system', 'BlinkMacSystemFont', 'SF Pro Text', 'SF Pro Display', 'Segoe UI', 'Roboto', 'Helvetica', 'Arial', 'sans-serif']
+          }
+        }
+      }
+    }
+  </script>
+<!-- BEGIN: Style Configurations -->
+<style data-purpose="custom-animations">
+    /* Subtle keyframe rotation for smooth loading state */
+    @keyframes spin-smooth {
+      0% {
+        transform: rotate(0deg);
+      }
+      100% {
+        transform: rotate(360deg);
+      }
+    }
+
+    .animate-spin-smooth {
+      animation: spin-smooth 1.2s cubic-bezier(0.55, 0.15, 0.45, 0.85) infinite;
+    }
+  </style>
+<style data-purpose="device-viewport">
+    /* Precise iPhone viewport presentation */
+    body {
+      background-color: #ECEEF2;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      margin: 0;
+      padding: 16px;
+      font-feature-settings: 'cv02', 'cv03', 'cv04', 'cv11';
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+  </style>
+<!-- END: Style Configurations -->
+</head>
+<body class="font-sans antialiased text-slate-800 selection:bg-teal-100">
+<!-- BEGIN: MobileDeviceFrame -->
+<main class="w-[390px] h-[844px] bg-[#FAFAF9] rounded-[48px] shadow-2xl relative flex flex-col justify-between overflow-hidden border-[7px] border-slate-900/10">
+<!-- BEGIN: iOSStatusBar -->
+<header class="w-full px-8 pt-3.5 pb-2 flex justify-between items-center z-20 select-none" data-purpose="ios-status-bar">
+<!-- Time Display -->
+<span class="text-[15px] font-semibold tracking-tight text-slate-900 font-sans">9:41</span>
+<!-- System Status Icons (Signal, Wifi, Battery) -->
+<div class="flex items-center space-x-2 text-slate-900">
+<!-- Cellular Signal Icon -->
+<svg class="w-4 h-4 fill-current" viewbox="0 0 17 12">
+<rect height="4" rx="0.75" width="2.5" x="0" y="8"></rect>
+<rect height="6.5" rx="0.75" width="2.5" x="4.5" y="5.5"></rect>
+<rect height="9" rx="0.75" width="2.5" x="9" y="3"></rect>
+<rect height="11.5" rx="0.75" width="2.5" x="13.5" y="0.5"></rect>
+</svg>
+<!-- Wi-Fi Icon -->
+<svg class="w-4 h-4 fill-current" viewbox="0 0 16 12">
+<path d="M8 12a1.5 1.5 0 100-3 1.5 1.5 0 000 3zm5.07-5.07A7.95 7.95 0 008 5.25c-1.92 0-3.69.68-5.07 1.68l1.06 1.06A6.47 6.47 0 018 6.75c1.55 0 2.97.55 4.01 1.24l1.06-1.06zm2.83-2.83C13.88 2.5 11.08 1.5 8 1.5c-3.08 0-5.88 1-7.9 2.6L1.16 5.16C3.01 3.73 5.39 2.85 8 2.85s4.99.88 6.84 2.31l1.06-1.06z"></path>
+</svg>
+<!-- Battery Icon -->
+<div class="flex items-center">
+<div class="w-6 h-[11px] border border-slate-900 rounded-sm p-[1.5px] flex items-center">
+<div class="h-full w-full bg-slate-900 rounded-[1px]"></div>
+</div>
+<div class="w-[1.5px] h-1 bg-slate-900 rounded-r-full -ml-[0.5px]"></div>
+</div>
+</div>
+</header>
+<!-- END: iOSStatusBar -->
+<!-- BEGIN: MinimalTopAppBar -->
+<nav class="w-full px-5 h-11 flex items-center justify-between z-10" data-purpose="app-bar">
+<!-- Back Chevron Button -->
+<button aria-label="Back" class="w-10 h-10 -ml-2 rounded-full flex items-center justify-center text-slate-700 hover:text-slate-900 active:bg-slate-200/50 transition-colors" type="button">
+<svg class="w-5 h-5 stroke-current stroke-2 fill-none" viewbox="0 0 24 24">
+<path d="M15 19l-7-7 7-7" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</button>
+<!-- Empty container for symmetrical spacing -->
+<div class="w-10"></div>
+</nav>
+<!-- END: MinimalTopAppBar -->
+<!-- BEGIN: LoadingStateContent -->
+<section class="flex-1 flex flex-col items-center justify-center px-6 -mt-14" data-purpose="loading-state-container">
+<!-- Primary Circular Loading Spinner -->
+<div class="relative w-16 h-16 flex items-center justify-center mb-5" data-purpose="spinner-wrapper">
+<!-- Background Track Ring -->
+<svg class="w-14 h-14" fill="none" viewbox="0 0 56 56">
+<circle cx="28" cy="28" r="23" stroke="#E2E8F0" stroke-width="4.5"></circle>
+</svg>
+<!-- Animated Progress Stroke -->
+<svg class="w-14 h-14 absolute inset-0 m-auto animate-spin-smooth" fill="none" viewbox="0 0 56 56">
+<path d="M 28 5 A 23 23 0 0 1 51 28" stroke="#155E54" stroke-linecap="round" stroke-width="4.5"></path>
+</svg>
+</div>
+<!-- Loading Title -->
+<h1 class="text-xl font-bold tracking-tight text-slate-800 text-center">
+        Loading...
+      </h1>
+<!-- Informative Subtext -->
+<p class="mt-2 text-sm text-slate-500 font-normal text-center leading-relaxed max-w-[220px]">
+        Please wait while we load your trip details.
+      </p>
+</section>
+<!-- END: LoadingStateContent -->
+<!-- BEGIN: iOSHomeIndicator -->
+<footer class="w-full pb-3 pt-2 flex justify-center items-center select-none" data-purpose="home-indicator-area">
+<div class="w-36 h-[5px] bg-slate-900/80 rounded-full"></div>
+</footer>
+<!-- END: iOSHomeIndicator -->
+</main>
+<!-- END: MobileDeviceFrame -->
+</body></html>

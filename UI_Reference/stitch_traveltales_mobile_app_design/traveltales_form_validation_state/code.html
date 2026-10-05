@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>TravelTales - Add Expense (Form Validation)</title>
+<!-- Tailwind CSS CDN with forms plugin -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              teal: '#115E59', // Primary TravelTales teal
+              darkTeal: '#0F4D49',
+              lightTeal: '#F0FDFA',
+              disabled: '#99BDBA' // Soft muted/disabled teal button
+            },
+            neutral: {
+              card: '#FFFFFF',
+              canvas: '#F8FAFC',
+              border: '#E2E8F0',
+              label: '#1E293B',
+              muted: '#64748B'
+            }
+          }
+        }
+      }
+    }
+  </script>
+<style data-purpose="base-styling">
+    /* Custom font smoothing and iOS feel */
+    body {
+      -webkit-tap-highlight-color: transparent;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    }
+  </style>
+</head>
+<body class="bg-slate-100 flex items-center justify-center min-h-screen p-0 sm:p-4">
+<!-- BEGIN: MobileContainer -->
+<!-- iPhone 14/15 standard viewport dimension 390px x 844px -->
+<main class="w-[390px] h-[844px] bg-white shadow-2xl overflow-hidden flex flex-col justify-between relative border border-slate-200 sm:rounded-[44px]">
+<!-- BEGIN: TopBarAndHeader -->
+<header class="w-full flex-shrink-0 pt-3 px-5 bg-white z-10">
+<!-- iOS Status Bar -->
+<div class="flex items-center justify-between text-neutral-800 text-[14px] font-semibold tracking-tight pb-2" data-purpose="status-bar">
+<span>9:41</span>
+<div class="flex items-center space-x-1.5 text-neutral-800">
+<!-- Cellular Icon -->
+<svg class="w-4 h-3.5" fill="currentColor" viewbox="0 0 16 12">
+<rect height="4" rx="0.5" width="2.5" x="0" y="8"></rect>
+<rect height="6.5" rx="0.5" width="2.5" x="4.5" y="5.5"></rect>
+<rect height="9" rx="0.5" width="2.5" x="9" y="3"></rect>
+<rect height="12" rx="0.5" width="2.5" x="13.5" y="0"></rect>
+</svg>
+<!-- Wifi Icon -->
+<svg class="w-4 h-3.5" fill="currentColor" viewbox="0 0 16 12">
+<path d="M8 2.5C11 2.5 13.5 3.8 15 5.5L8 12.5L1 5.5C2.5 3.8 5 2.5 8 2.5ZM8 4.2C5.8 4.2 3.8 5.1 2.7 6.4L8 11.6L13.3 6.4C12.2 5.1 10.2 4.2 8 4.2Z"></path>
+</svg>
+<!-- Battery Icon -->
+<div class="flex items-center">
+<div class="w-5 h-2.5 border border-neutral-800 rounded-[3px] p-[1px] flex items-center">
+<div class="h-full w-full bg-neutral-800 rounded-[1.5px]"></div>
+</div>
+<div class="w-0.5 h-1 bg-neutral-800 rounded-r-sm"></div>
+</div>
+</div>
+</div>
+<!-- Navigation Bar -->
+<div class="relative flex items-center justify-center py-3 border-b border-neutral-100" data-purpose="app-header">
+<!-- Back Button -->
+<button aria-label="Go Back" class="absolute left-0 p-1 text-slate-700 hover:text-slate-900 transition-colors" type="button">
+<svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" viewbox="0 0 24 24">
+<polyline points="15 18 9 12 15 6"></polyline>
+</svg>
+</button>
+<!-- Page Title -->
+<h1 class="text-slate-800 font-semibold text-[17px] tracking-tight">Add Expense</h1>
+</div>
+</header>
+<!-- END: TopBarAndHeader -->
+<!-- BEGIN: FormValidationContent -->
+<div class="flex-1 px-5 pt-6 pb-4 overflow-y-auto space-y-5" data-purpose="form-validation-screen">
+<!-- Form Field: Category (Dropdown) -->
+<div class="space-y-1.5" data-purpose="field-category">
+<label class="block text-[13px] font-medium text-slate-700" for="category">Category</label>
+<div class="relative">
+<!-- Fork and Spoon Icon on Left -->
+<div class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-slate-600">
+<svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24">
+<path d="M18 2v6a3 3 0 0 1-3 3 3 3 0 0 1-3-3V2"></path>
+<path d="M15 2v18"></path>
+<line x1="9" x2="9" y1="2" y2="20"></line>
+<line x1="6" x2="6" y1="2" y2="7"></line>
+<line x1="12" x2="12" y1="2" y2="7"></line>
+</svg>
+</div>
+<!-- Dropdown Element -->
+<select class="w-full bg-white border border-slate-200 rounded-xl py-3 pl-10 pr-9 text-[15px] text-slate-800 font-normal focus:ring-1 focus:ring-teal-700 focus:border-teal-700 appearance-none shadow-sm cursor-pointer" id="category" name="category">
+<option selected="">Food</option>
+<option>Flight Tickets</option>
+<option>Hotel Stay</option>
+<option>Transport</option>
+<option>Activities</option>
+<option>Other</option>
+</select>
+<!-- Caret Down Icon -->
+<div class="absolute inset-y-0 right-0 pr-3.5 flex items-center pointer-events-none text-slate-400">
+<svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24">
+<polyline points="6 9 12 15 18 9"></polyline>
+</svg>
+</div>
+</div>
+</div>
+<!-- Form Field: Amount (Invalid State with Validation Feedback) -->
+<div class="space-y-1.5" data-purpose="field-amount-error">
+<label class="block text-[13px] font-medium text-slate-700" for="amount">Amount</label>
+<div class="relative">
+<!-- Text Input with Red Error Border and Soft Tint -->
+<input aria-describedby="amount-error-msg" aria-invalid="true" class="w-full bg-red-50/20 border border-red-500 rounded-xl py-3 pl-3.5 pr-10 text-[15px] placeholder-red-400 text-red-600 focus:outline-none focus:ring-1 focus:ring-red-500 focus:border-red-500 shadow-sm" id="amount" name="amount" placeholder="Enter amount" type="text"/>
+<!-- Error Exclamation Alert Indicator -->
+<div class="absolute inset-y-0 right-0 pr-3.5 flex items-center pointer-events-none text-red-500">
+<svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24">
+<circle cx="12" cy="12" r="10"></circle>
+<line x1="12" x2="12" y1="8" y2="12"></line>
+<line x1="12" x2="12.01" y1="16" y2="16"></line>
+</svg>
+</div>
+</div>
+<!-- Error message feedback -->
+<p class="text-[12px] font-normal text-red-500 pt-0.5" id="amount-error-msg">Amount is required</p>
+</div>
+<!-- Form Field: Date -->
+<div class="space-y-1.5" data-purpose="field-date">
+<label class="block text-[13px] font-medium text-slate-700" for="date">Date</label>
+<div class="relative">
+<input class="w-full bg-white border border-slate-200 rounded-xl py-3 pl-3.5 pr-10 text-[15px] text-slate-800 font-normal focus:ring-1 focus:ring-teal-700 focus:border-teal-700 shadow-sm cursor-pointer" id="date" name="date" readonly="" type="text" value="12 Apr 2025"/>
+<!-- Calendar Icon -->
+<div class="absolute inset-y-0 right-0 pr-3.5 flex items-center pointer-events-none text-slate-500">
+<svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" viewbox="0 0 24 24">
+<rect height="18" rx="2" ry="2" width="18" x="3" y="4"></rect>
+<line x1="16" x2="16" y1="2" y2="6"></line>
+<line x1="8" x2="8" y1="2" y2="6"></line>
+<line x1="3" x2="21" y1="10" y2="10"></line>
+</svg>
+</div>
+</div>
+</div>
+<!-- Form Field: Description -->
+<div class="space-y-1.5" data-purpose="field-description">
+<label class="block text-[13px] font-medium text-slate-700" for="description">Description</label>
+<input class="w-full bg-white border border-slate-200 rounded-xl py-3 px-3.5 text-[15px] placeholder-slate-400 text-slate-800 font-normal focus:ring-1 focus:ring-teal-700 focus:border-teal-700 shadow-sm" id="description" name="description" placeholder="e.g. Dinner at local restaurant" type="text"/>
+</div>
+</div>
+<!-- END: FormValidationContent -->
+<!-- BEGIN: BottomActionSection -->
+<footer class="w-full px-5 pt-3 pb-8 bg-white border-t border-slate-50 flex flex-col items-center flex-shrink-0" data-purpose="bottom-action-bar">
+<!-- Save Expense Button (Disabled / Muted due to validation error) -->
+<button aria-disabled="true" class="w-full bg-slate-300 text-white font-medium text-[15px] py-3.5 rounded-xl cursor-not-allowed transition-all opacity-80 shadow-none tracking-wide text-center" disabled="" type="button">
+        Save Expense
+      </button>
+<!-- iOS Home Indicator -->
+<div aria-hidden="true" class="w-32 h-1 bg-slate-900 rounded-full mt-5"></div>
+</footer>
+<!-- END: BottomActionSection -->
+</main>
+<!-- END: MobileContainer -->
+</body></html>

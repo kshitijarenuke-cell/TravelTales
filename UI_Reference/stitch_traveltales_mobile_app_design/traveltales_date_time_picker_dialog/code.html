@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>TravelTales - Date &amp; Time Picker Dialog</title>
+<!-- Tailwind CSS v3 with forms and container queries -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              DEFAULT: '#1B4D3E',
+              dark: '#143B30',
+              light: '#235D4B',
+              50: '#F0F6F4',
+              100: '#DDECE7'
+            }
+          },
+          fontFamily: {
+            sans: ['-apple-system', 'BlinkMacSystemFont', '"SF Pro Text"', '"Plus Jakarta Sans"', 'Inter', 'sans-serif']
+          }
+        }
+      }
+    };
+  </script>
+<!-- BEGIN: Custom Styles -->
+<style data-purpose="base-layout">
+    body {
+      background-color: #0F172A;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      margin: 0;
+      padding: 16px;
+      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Plus Jakarta Sans", Inter, sans-serif;
+      -webkit-font-smoothing: antialiased;
+    }
+    /* Fixed viewport matching 390x844 iPhone dimensions */
+    .mobile-screen {
+      width: 390px;
+      height: 844px;
+      position: relative;
+      overflow: hidden;
+      border-radius: 46px;
+      box-shadow: 0 25px 60px -15px rgba(0, 0, 0, 0.6), 0 0 0 10px #2D3748;
+    }
+  </style>
+<style data-purpose="scrollbar-and-helpers">
+    .no-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+    .no-scrollbar {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+  </style>
+<!-- END: Custom Styles -->
+</head>
+<body>
+<!-- BEGIN: Mobile Device Frame -->
+<div class="mobile-screen bg-[#F8F9FA] relative flex flex-col select-none text-slate-800" data-purpose="mobile-viewport">
+<!-- BEGIN: iOS Status Bar -->
+<header class="w-full pt-3 px-7 flex justify-between items-center z-10 text-slate-800 shrink-0 select-none" data-purpose="ios-status-bar">
+<!-- Time -->
+<span class="font-semibold text-[15px] tracking-tight text-slate-900">9:41</span>
+<!-- Dynamic Island / Speaker Notch Indicator -->
+<div class="w-28 h-4 bg-black rounded-full absolute left-1/2 -translate-x-1/2 top-2.5"></div>
+<!-- Right Status Icons -->
+<div class="flex items-center space-x-1.5 text-slate-900">
+<!-- Cellular Signal -->
+<svg class="w-4 h-4 fill-current" viewbox="0 0 24 24">
+<path d="M12 3c-4.97 0-9 4.03-9 9 0 2.12.74 4.07 1.97 5.61L4.35 19.4c-.39.39-.39 1.02 0 1.41.39.39 1.02.39 1.41 0l1.9-1.9C9.22 19.64 10.56 20 12 20c4.97 0 9-4.03 9-9s-4.03-9-9-9zm0 2c3.87 0 7 3.13 7 7 0 1.63-.56 3.13-1.5 4.34L6.66 5.5C7.87 4.56 9.37 4 12 4z"></path>
+</svg>
+<!-- Wifi -->
+<svg class="w-4 h-4 fill-current" viewbox="0 0 24 24">
+<path d="M12 4C7.31 4 3.07 5.9 0 8.98L12 21 24 8.98C20.93 5.9 16.69 4 12 4zm0 3.5c3.78 0 7.21 1.5 9.71 3.93L12 18.29 2.29 11.43C4.79 9 8.22 7.5 12 7.5z"></path>
+</svg>
+<!-- Battery -->
+<div class="w-5 h-2.5 border border-slate-900 rounded-sm p-0.5 flex items-center">
+<div class="h-full w-full bg-slate-900 rounded-[1px]"></div>
+</div>
+</div>
+</header>
+<!-- END: iOS Status Bar -->
+<!-- BEGIN: Background Content (Add Activity / Expense Form Dimmed Underneath) -->
+<main class="flex-1 px-5 pt-3 overflow-y-auto no-scrollbar filter blur-[1.5px] opacity-40 pointer-events-none" data-purpose="background-parent-form">
+<!-- Top Form Header -->
+<div class="flex items-center space-x-3 mb-5">
+<button class="w-9 h-9 rounded-full bg-white shadow-sm flex items-center justify-center text-slate-600">
+<svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24">
+<path d="M15 19l-7-7 7-7" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</button>
+<h1 class="text-xl font-bold text-slate-800">Add Activity</h1>
+</div>
+<!-- Form Inputs Dummy Stack -->
+<div class="space-y-4 text-xs font-medium text-slate-600">
+<div>
+<label class="block mb-1 text-slate-500 font-semibold text-xs">Activity Name</label>
+<div class="w-full bg-white border border-slate-200 rounded-xl px-3.5 py-3 text-slate-700">Uluwatu Sunset Temple</div>
+</div>
+<div>
+<label class="block mb-1 text-slate-500 font-semibold text-xs">Date</label>
+<div class="w-full bg-white border border-brand/60 ring-2 ring-brand/10 rounded-xl px-3.5 py-3 flex justify-between items-center text-slate-800 font-medium">
+<span>12 Apr 2025</span>
+<svg class="w-4 h-4 text-brand" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24">
+<path d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</div>
+</div>
+<div>
+<label class="block mb-1 text-slate-500 font-semibold text-xs">Time</label>
+<div class="w-full bg-white border border-slate-200 rounded-xl px-3.5 py-3 flex justify-between items-center text-slate-700">
+<span>09:00 AM</span>
+<svg class="w-4 h-4 text-slate-400" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24">
+<circle cx="12" cy="12" r="9"></circle>
+<polyline points="12 6 12 12 16 14"></polyline>
+</svg>
+</div>
+</div>
+<div>
+<label class="block mb-1 text-slate-500 font-semibold text-xs">Category</label>
+<div class="w-full bg-white border border-slate-200 rounded-xl px-3.5 py-3 flex justify-between items-center text-slate-700">
+<span>Sightseeing</span>
+<svg class="w-4 h-4 text-slate-400" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24">
+<path d="M19 9l-7 7-7-7" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</div>
+</div>
+<div>
+<label class="block mb-1 text-slate-500 font-semibold text-xs">Location</label>
+<div class="w-full bg-white border border-slate-200 rounded-xl px-3.5 py-3 text-slate-400">e.g. Uluwatu, Bali</div>
+</div>
+<button class="w-full bg-brand text-white py-3.5 rounded-xl font-semibold mt-4">Save Activity</button>
+</div>
+</main>
+<!-- END: Background Content -->
+<!-- BEGIN: Modal Backdrop Overlay -->
+<div class="absolute inset-0 bg-slate-900/40 backdrop-blur-[2px] z-20 flex flex-col justify-center items-center px-4" data-purpose="dialog-backdrop">
+<!-- BEGIN: Date & Time Picker Modal Dialog Card (Reference Item 14) -->
+<section class="w-full max-w-[350px] bg-white rounded-[28px] shadow-2xl border border-slate-100 flex flex-col overflow-hidden animate-in fade-in zoom-in-95 duration-200" data-purpose="date-time-picker-dialog">
+<!-- Dialog Header with Segmented Navigation (Date / Time Selector) -->
+<div class="p-5 pb-3 border-b border-slate-100">
+<div class="flex items-center justify-between mb-3">
+<h2 class="text-base font-bold text-slate-900">Select Date &amp; Time</h2>
+<span class="text-[11px] font-semibold tracking-wider uppercase text-brand bg-brand-50 px-2.5 py-0.5 rounded-full border border-brand-100">
+              Trip Schedule
+            </span>
+</div>
+<!-- Dual Tab Pills (Date Active, Time Complementary) -->
+<div class="grid grid-cols-2 p-1 bg-slate-100/80 rounded-xl text-xs font-semibold">
+<button class="py-1.5 rounded-lg bg-white text-brand shadow-sm flex items-center justify-center space-x-1.5 transition">
+<svg class="w-3.5 h-3.5 text-brand" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24">
+<rect height="18" rx="2" ry="2" width="18" x="3" y="4"></rect>
+<line x1="16" x2="16" y1="2" y2="6"></line>
+<line x1="8" x2="8" y1="2" y2="6"></line>
+<line x1="3" x2="21" y1="10" y2="10"></line>
+</svg>
+<span>12 Apr 2025</span>
+</button>
+<button class="py-1.5 rounded-lg text-slate-600 hover:text-slate-900 flex items-center justify-center space-x-1.5 transition">
+<svg class="w-3.5 h-3.5 text-slate-400" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24">
+<circle cx="12" cy="12" r="9"></circle>
+<polyline points="12 6 12 12 16 14"></polyline>
+</svg>
+<span>09:00 AM</span>
+</button>
+</div>
+</div>
+<!-- Dialog Calendar Body -->
+<div class="px-5 pt-3 pb-2" data-purpose="calendar-section">
+<!-- Month & Year Selector Header with Navigation Arrows -->
+<div class="flex items-center justify-between py-1 mb-2">
+<button aria-label="Previous month" class="w-7 h-7 rounded-full flex items-center justify-center hover:bg-slate-100 text-slate-600 transition">
+<svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.5" viewbox="0 0 24 24">
+<path d="M15 19l-7-7 7-7" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</button>
+<span class="text-sm font-bold text-slate-800 tracking-tight">April 2025</span>
+<button aria-label="Next month" class="w-7 h-7 rounded-full flex items-center justify-center hover:bg-slate-100 text-slate-600 transition">
+<svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.5" viewbox="0 0 24 24">
+<path d="M9 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</button>
+</div>
+<!-- Weekday Headers (Sun, Mon, Tue, Wed, Thu, Fri, Sat) -->
+<div class="grid grid-cols-7 text-center mb-1">
+<span class="text-[11px] font-medium text-slate-400 py-1">Sun</span>
+<span class="text-[11px] font-medium text-slate-400 py-1">Mon</span>
+<span class="text-[11px] font-medium text-slate-400 py-1">Tue</span>
+<span class="text-[11px] font-medium text-slate-400 py-1">Wed</span>
+<span class="text-[11px] font-medium text-slate-400 py-1">Thu</span>
+<span class="text-[11px] font-medium text-slate-400 py-1">Fri</span>
+<span class="text-[11px] font-medium text-slate-400 py-1">Sat</span>
+</div>
+<!-- Days Grid (April 2025 starts on Tuesday) -->
+<div class="grid grid-cols-7 text-center gap-y-1 text-xs font-medium">
+<!-- Empty leading days for April 2025 (Sun, Mon are March 30, 31) -->
+<span class="py-1.5 text-slate-300">30</span>
+<span class="py-1.5 text-slate-300">31</span>
+<!-- Row 1 -->
+<span class="py-1.5 text-slate-700 hover:bg-slate-100 rounded-full cursor-pointer">1</span>
+<span class="py-1.5 text-slate-700 hover:bg-slate-100 rounded-full cursor-pointer">2</span>
+<span class="py-1.5 text-slate-700 hover:bg-slate-100 rounded-full cursor-pointer">3</span>
+<span class="py-1.5 text-slate-700 hover:bg-slate-100 rounded-full cursor-pointer">4</span>
+<span class="py-1.5 text-slate-700 hover:bg-slate-100 rounded-full cursor-pointer">5</span>
+<!-- Row 2 -->
+<span class="py-1.5 text-slate-700 hover:bg-slate-100 rounded-full cursor-pointer">6</span>
+<span class="py-1.5 text-slate-700 hover:bg-slate-100 rounded-full cursor-pointer">7</span>
+<span class="py-1.5 text-slate-700 hover:bg-slate-100 rounded-full cursor-pointer">8</span>
+<span class="py-1.5 text-slate-700 hover:bg-slate-100 rounded-full cursor-pointer">9</span>
+<span class="py-1.5 text-slate-700 hover:bg-slate-100 rounded-full cursor-pointer">10</span>
+<span class="py-1.5 text-slate-700 hover:bg-slate-100 rounded-full cursor-pointer">11</span>
+<!-- Day 12 Highlighted in Deep Brand Teal (#1B4D3E) -->
+<div class="flex items-center justify-center">
+<span class="w-7 h-7 bg-brand text-white font-bold rounded-full flex items-center justify-center shadow-sm">12</span>
+</div>
+<!-- Row 3 -->
+<span class="py-1.5 text-slate-700 hover:bg-slate-100 rounded-full cursor-pointer">13</span>
+<span class="py-1.5 text-slate-700 hover:bg-slate-100 rounded-full cursor-pointer">14</span>
+<span class="py-1.5 text-slate-700 hover:bg-slate-100 rounded-full cursor-pointer">15</span>
+<span class="py-1.5 text-slate-700 hover:bg-slate-100 rounded-full cursor-pointer">16</span>
+<span class="py-1.5 text-slate-700 hover:bg-slate-100 rounded-full cursor-pointer">17</span>
+<span class="py-1.5 text-slate-700 hover:bg-slate-100 rounded-full cursor-pointer">18</span>
+<span class="py-1.5 text-slate-700 hover:bg-slate-100 rounded-full cursor-pointer">19</span>
+<!-- Row 4 -->
+<span class="py-1.5 text-slate-700 hover:bg-slate-100 rounded-full cursor-pointer">20</span>
+<span class="py-1.5 text-slate-700 hover:bg-slate-100 rounded-full cursor-pointer">21</span>
+<span class="py-1.5 text-slate-700 hover:bg-slate-100 rounded-full cursor-pointer">22</span>
+<span class="py-1.5 text-slate-700 hover:bg-slate-100 rounded-full cursor-pointer">23</span>
+<span class="py-1.5 text-slate-700 hover:bg-slate-100 rounded-full cursor-pointer">24</span>
+<span class="py-1.5 text-slate-700 hover:bg-slate-100 rounded-full cursor-pointer">25</span>
+<span class="py-1.5 text-slate-700 hover:bg-slate-100 rounded-full cursor-pointer">26</span>
+<!-- Row 5 -->
+<span class="py-1.5 text-slate-700 hover:bg-slate-100 rounded-full cursor-pointer">27</span>
+<span class="py-1.5 text-slate-700 hover:bg-slate-100 rounded-full cursor-pointer">28</span>
+<span class="py-1.5 text-slate-700 hover:bg-slate-100 rounded-full cursor-pointer">29</span>
+<span class="py-1.5 text-slate-700 hover:bg-slate-100 rounded-full cursor-pointer">30</span>
+<span class="py-1.5 text-slate-300">1</span>
+<span class="py-1.5 text-slate-300">2</span>
+<span class="py-1.5 text-slate-300">3</span>
+</div>
+</div>
+<!-- Quick Time Selector Ribbon (as shown in reference item 14 Time dialog) -->
+<div class="mx-5 my-2 p-2.5 bg-slate-50 border border-slate-100 rounded-2xl flex items-center justify-between" data-purpose="time-drum-preview">
+<div class="flex items-center space-x-2">
+<span class="text-xs font-semibold text-slate-500">Selected Time:</span>
+<!-- Time Wheel Drum Display -->
+<div class="flex items-center space-x-1 font-mono text-sm font-bold text-slate-800 bg-white px-2.5 py-1 rounded-lg border border-slate-200 shadow-xs">
+<span class="text-brand">09</span>
+<span class="text-slate-400">:</span>
+<span class="text-brand">00</span>
+<span class="text-xs ml-1 px-1.5 py-0.5 rounded bg-brand text-white font-sans font-semibold">AM</span>
+</div>
+</div>
+<!-- Quick toggle button -->
+<button class="text-xs font-semibold text-brand hover:underline px-1 py-0.5">
+            Change
+          </button>
+</div>
+<!-- Dialog Bottom Actions (Cancel & OK matching reference #14) -->
+<div class="px-5 py-3.5 bg-slate-50/50 border-t border-slate-100 flex items-center justify-end space-x-3" data-purpose="dialog-actions">
+<button class="px-4 py-2 text-xs font-bold text-slate-600 hover:text-slate-900 rounded-xl hover:bg-slate-100 transition">
+            Cancel
+          </button>
+<button class="px-6 py-2 text-xs font-bold text-white bg-brand hover:bg-brand-dark rounded-xl shadow-md shadow-brand/20 active:scale-95 transition">
+            OK
+          </button>
+</div>
+</section>
+<!-- END: Date & Time Picker Modal Dialog Card -->
+</div>
+<!-- END: Modal Backdrop Overlay -->
+<!-- BEGIN: iOS Home Indicator Bar -->
+<footer class="w-full pb-2 pt-1 flex justify-center z-30 pointer-events-none" data-purpose="ios-home-indicator">
+<div class="w-36 h-1 bg-slate-900/60 rounded-full"></div>
+</footer>
+<!-- END: iOS Home Indicator Bar -->
+</div>
+<!-- END: Mobile Device Frame -->
+</body></html>

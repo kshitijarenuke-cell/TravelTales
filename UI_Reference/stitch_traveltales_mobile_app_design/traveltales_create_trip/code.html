@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>TravelTales - Create New Trip</title>
+<!-- Tailwind CSS CDN with forms and container queries plugins -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            teal: {
+              brand: '#1B4D3E',
+              brandHover: '#164034',
+            },
+            charcoal: {
+              primary: '#111827',
+              muted: '#4B5563',
+              subtle: '#6B7280',
+            },
+            appBg: '#FAFAF9',
+            inputBorder: '#E5E7EB',
+          },
+          fontFamily: {
+            sans: ['-apple-system', 'BlinkMacSystemFont', '"SF Pro Text"', '"SF Pro Display"', 'Inter', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+<!-- Styles for device wrapper and clean form controls -->
+<style data-purpose="viewport-layout">
+    body {
+      background-color: #E5E7EB;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro Display", Inter, sans-serif;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* Fixed 390x844 iPhone Viewport */
+    .mobile-frame {
+      width: 390px;
+      height: 844px;
+      max-width: 390px;
+      max-height: 844px;
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25), 0 0 0 1px rgba(0, 0, 0, 0.05);
+    }
+  </style>
+<style data-purpose="form-controls">
+    input::placeholder {
+      color: #9CA3AF;
+      font-weight: 400;
+    }
+  </style>
+</head>
+<body>
+<!-- BEGIN: MobileDeviceContainer -->
+<main class="mobile-frame bg-appBg text-charcoal-primary selection:bg-teal-brand/20 select-none">
+<!-- BEGIN: StatusBar -->
+<header class="w-full pt-3 px-7 flex justify-between items-center z-20 shrink-0 text-charcoal-primary" data-purpose="ios-status-bar">
+<!-- Time -->
+<span class="text-[15px] font-semibold tracking-tight">9:41</span>
+<!-- System Icons: Cellular, Wifi, Battery -->
+<div class="flex items-center space-x-1.5">
+<!-- Cellular Signal Icon -->
+<svg aria-hidden="true" class="w-4 h-4 fill-current" viewbox="0 0 24 24">
+<path d="M2 17h3v4H2v-4zm5-4h3v8H7v-8zm5-4h3v12h-3V9zm5-5h3v17h-3V4z"></path>
+</svg>
+<!-- Wi-Fi Icon -->
+<svg aria-hidden="true" class="w-4 h-4 fill-current" viewbox="0 0 24 24">
+<path d="M12 4C7.31 4 3.07 5.9 0 8.98L12 21 24 8.98C20.93 5.9 16.69 4 12 4zm0 3.5c3.78 0 7.22 1.48 9.77 3.93L12 18.25 2.23 11.43C4.78 8.98 8.22 7.5 12 7.5z"></path>
+</svg>
+<!-- Battery Icon -->
+<svg aria-hidden="true" class="w-6 h-3 fill-current" viewbox="0 0 28 14">
+<rect fill="none" height="13" rx="3.5" stroke="currentColor" stroke-width="1.2" width="23" x="0.5" y="0.5"></rect>
+<rect fill="currentColor" height="10" rx="2" width="16" x="2" y="2"></rect>
+<path d="M25 4.5v5c.8-.5 1.5-1.4 1.5-2.5s-.7-2-1.5-2.5z" fill="currentColor"></path>
+</svg>
+</div>
+</header>
+<!-- END: StatusBar -->
+<!-- BEGIN: NavigationBar -->
+<nav class="w-full px-5 pt-3 pb-3 flex items-center relative shrink-0" data-purpose="app-bar">
+<!-- Back Button -->
+<button aria-label="Go back" class="p-1 -ml-1 text-charcoal-primary hover:opacity-75 transition-opacity focus:outline-none" type="button">
+<svg class="w-6 h-6 stroke-current stroke-[2.2] fill-none" stroke-linecap="round" stroke-linejoin="round" viewbox="0 0 24 24">
+<path d="M15 18l-6-6 6-6"></path>
+</svg>
+</button>
+<!-- Screen Title -->
+<h1 class="absolute left-0 right-0 text-center pointer-events-none font-bold text-[17px] text-charcoal-primary">
+        Create New Trip
+      </h1>
+</nav>
+<!-- END: NavigationBar -->
+<!-- BEGIN: MainContentArea -->
+<section class="flex-1 px-5 pt-1 pb-4 flex flex-col justify-between overflow-y-auto" data-purpose="trip-creation-form">
+<div class="space-y-4">
+<!-- Destination Hero Image Banner -->
+<div class="w-full h-[152px] rounded-2xl overflow-hidden shadow-sm relative shrink-0" data-purpose="hero-image-banner">
+<img alt="Scenic tropical coastal landscape in Bali" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuByL-hAb0vtR79_O-QDqQaYKpF4NgrF4TKWdMs5uK2W1vxO-YhjZ-jcj3X02zUuU9Yoaandym9XoFB5bVDR1QC4SvAMGvJjcRzm_v9dQQ4rbW--Fk56uywdUzIW6Eszoh7VjcRINnzo751CRaEU1uD5TTVim_8IXLT_Q_3VQU4y1uAyNDPKeVp7GJgr_AUGduHNjk6HfDunO0g6W28Z5dJzzzz_n4lPeUCPLvrFejJVsLCIeLqqU8UylA"/>
+</div>
+<!-- Form Fields Container -->
+<form class="space-y-4" onsubmit="event.preventDefault()">
+<!-- Field: Trip Name -->
+<div class="space-y-1.5" data-purpose="field-trip-name">
+<label class="block text-[13px] font-medium text-charcoal-muted" for="tripName">
+              Trip Name
+            </label>
+<div class="relative">
+<input class="w-full h-[48px] px-3.5 bg-white border border-inputBorder rounded-xl text-[15px] text-charcoal-primary placeholder-gray-400 focus:outline-none focus:ring-1 focus:ring-teal-brand focus:border-teal-brand transition-all shadow-[0_1px_2px_rgba(0,0,0,0.02)]" id="tripName" name="tripName" placeholder="e.g. Bali Adventure" type="text"/>
+</div>
+</div>
+<!-- Field: Destination -->
+<div class="space-y-1.5" data-purpose="field-destination">
+<label class="block text-[13px] font-medium text-charcoal-muted" for="destination">
+              Destination
+            </label>
+<div class="relative flex items-center">
+<input class="w-full h-[48px] pl-3.5 pr-10 bg-white border border-inputBorder rounded-xl text-[15px] text-charcoal-primary placeholder-gray-400 focus:outline-none focus:ring-1 focus:ring-teal-brand focus:border-teal-brand transition-all shadow-[0_1px_2px_rgba(0,0,0,0.02)]" id="destination" name="destination" placeholder="e.g. Bali, Indonesia" type="text"/>
+<!-- Pin Location Icon -->
+<div class="absolute right-3 text-charcoal-subtle pointer-events-none">
+<svg class="w-5 h-5 fill-none stroke-current stroke-[1.8]" stroke-linecap="round" stroke-linejoin="round" viewbox="0 0 24 24">
+<path d="M12 21c-4.418-5.333-7-8.889-7-12a7 7 0 1 1 14 0c0 3.111-2.582 6.667-7 12z"></path>
+<circle cx="12" cy="9" r="2.5"></circle>
+</svg>
+</div>
+</div>
+</div>
+<!-- Date Fields Grid (Two Columns: Start Date & End Date) -->
+<div class="grid grid-cols-2 gap-3" data-purpose="field-dates-row">
+<!-- Column 1: Start Date -->
+<div class="space-y-1.5">
+<label class="block text-[13px] font-medium text-charcoal-muted" for="startDate">
+                Start Date
+              </label>
+<div class="relative flex items-center">
+<input class="w-full h-[48px] pl-3.5 pr-9 bg-white border border-inputBorder rounded-xl text-[14px] text-charcoal-primary font-normal focus:outline-none focus:ring-1 focus:ring-teal-brand focus:border-teal-brand shadow-[0_1px_2px_rgba(0,0,0,0.02)]" id="startDate" name="startDate" type="text" value="12 Apr 2025"/>
+<!-- Calendar Icon -->
+<div class="absolute right-2.5 text-charcoal-subtle pointer-events-none">
+<svg class="w-4 h-4 fill-none stroke-current stroke-[1.8]" stroke-linecap="round" stroke-linejoin="round" viewbox="0 0 24 24">
+<rect height="18" rx="2" ry="2" width="18" x="3" y="4"></rect>
+<line x1="16" x2="16" y1="2" y2="6"></line>
+<line x1="8" x2="8" y1="2" y2="6"></line>
+<line x1="3" x2="21" y1="10" y2="10"></line>
+</svg>
+</div>
+</div>
+</div>
+<!-- Column 2: End Date -->
+<div class="space-y-1.5">
+<label class="block text-[13px] font-medium text-charcoal-muted" for="endDate">
+                End Date
+              </label>
+<div class="relative flex items-center">
+<input class="w-full h-[48px] pl-3.5 pr-9 bg-white border border-inputBorder rounded-xl text-[14px] text-charcoal-primary font-normal focus:outline-none focus:ring-1 focus:ring-teal-brand focus:border-teal-brand shadow-[0_1px_2px_rgba(0,0,0,0.02)]" id="endDate" name="endDate" type="text" value="20 Apr 2025"/>
+<!-- Calendar Icon -->
+<div class="absolute right-2.5 text-charcoal-subtle pointer-events-none">
+<svg class="w-4 h-4 fill-none stroke-current stroke-[1.8]" stroke-linecap="round" stroke-linejoin="round" viewbox="0 0 24 24">
+<rect height="18" rx="2" ry="2" width="18" x="3" y="4"></rect>
+<line x1="16" x2="16" y1="2" y2="6"></line>
+<line x1="8" x2="8" y1="2" y2="6"></line>
+<line x1="3" x2="21" y1="10" y2="10"></line>
+</svg>
+</div>
+</div>
+</div>
+</div>
+</form>
+</div>
+<!-- Action Button: Create Trip -->
+<div class="pt-4 pb-2" data-purpose="submit-action-container">
+<button class="w-full h-[50px] bg-teal-brand hover:bg-teal-brandHover active:scale-[0.99] text-white font-medium text-[15px] rounded-xl flex items-center justify-center transition-all duration-150 shadow-sm" type="button">
+          Create Trip
+        </button>
+</div>
+</section>
+<!-- END: MainContentArea -->
+<!-- BEGIN: HomeIndicator -->
+<footer class="w-full pb-2 pt-1 flex justify-center shrink-0" data-purpose="ios-home-indicator">
+<div class="w-36 h-[5px] bg-charcoal-primary/80 rounded-full"></div>
+</footer>
+<!-- END: HomeIndicator -->
+</main>
+<!-- END: MobileDeviceContainer -->
+</body></html>

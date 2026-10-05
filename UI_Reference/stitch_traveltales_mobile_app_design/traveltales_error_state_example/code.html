@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>TravelTales - Add Expense Error State</title>
+<!-- Tailwind CSS CDN with Forms Plugin -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              primary: '#0B4D3C', // Deep forest teal tone characteristic of TravelTales
+              disabled: '#9DB3AB',
+              fieldBg: '#FFFFFF',
+              pageBg: '#FAFBFB',
+              borderDefault: '#E2E8F0',
+              textPrimary: '#1E293B',
+              textSecondary: '#64748B',
+              error: '#EF4444',
+              errorBg: '#FEF2F2'
+            }
+          },
+          fontFamily: {
+            sans: ['Inter', 'Plus Jakarta Sans', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+<style data-purpose="base-layout">
+    /* Exact iOS dimensions viewport simulation */
+    body {
+      background-color: #ECEFF1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      margin: 0;
+      padding: 24px;
+      font-family: -apple-system, BlinkMacSystemFont, "Plus Jakarta Sans", "Inter", sans-serif;
+      -webkit-font-smoothing: antialiased;
+    }
+  </style>
+<style data-purpose="form-controls">
+    /* Remove input default ring styling to preserve standard mobile outline design */
+    input:focus, textarea:focus, select:focus {
+      outline: none !important;
+      box-shadow: none !important;
+    }
+  </style>
+</head>
+<body class="antialiased text-slate-800">
+<!-- BEGIN: MobileDeviceFrame -->
+<div class="relative w-[390px] h-[844px] bg-[#FAFAFA] rounded-[48px] overflow-hidden shadow-2xl border-[6px] border-slate-900 flex flex-col justify-between select-none" data-purpose="mobile-frame">
+<!-- BEGIN: TopAppSection -->
+<header class="w-full pt-3 px-6 z-20 bg-[#FAFAFA]">
+<!-- Status Bar (iOS standard) -->
+<div class="flex justify-between items-center text-[15px] font-semibold tracking-tight text-slate-900 h-10 select-none" data-purpose="status-bar">
+<span class="pl-2">9:41</span>
+<div class="flex items-center space-x-2 text-slate-900 pr-2">
+<!-- Cellular Icon -->
+<svg class="w-4 h-4 fill-current" viewbox="0 0 24 24">
+<path d="M12 3c-4.97 0-9 4.03-9 9 0 2.12.74 4.07 1.97 5.61L4.35 18.23C2.89 16.5 2 14.36 2 12c0-5.52 4.48-10 10-10s10 4.48 10 10c0 2.36-.89 4.5-2.35 6.23l-.62-.62C20.26 16.07 21 14.12 21 12c0-4.97-4.03-9-9-9zm0 4c-2.76 0-5 2.24-5 5 0 1.28.48 2.45 1.28 3.34l.71-.71C8.38 13.97 8 13.03 8 12c0-2.21 1.79-4 4-4s4 1.79 4 4c0 1.03-.38 1.97-.99 2.63l.71.71c.8-.89 1.28-2.06 1.28-3.34 0-2.76-2.24-5-5-5zm0 8a2 2 0 100-4 2 2 0 000 4z" opacity="0.1"></path>
+<path d="M2 18h3v4H2v-4zm5-4h3v8H7v-8zm5-4h3v12h-3V10zm5-5h3v17h-3V5z"></path>
+</svg>
+<!-- Wifi Icon -->
+<svg class="w-4 h-4 fill-current" viewbox="0 0 24 24">
+<path d="M12 4C7.31 4 3.07 5.9 0 8.98L12 21 24 8.98A16.88 16.88 0 0012 4zm0 3.2c3.73 0 7.15 1.45 9.72 3.84L12 19.35 2.28 11.04C4.85 8.65 8.27 7.2 12 7.2z"></path>
+</svg>
+<!-- Battery Icon -->
+<div class="flex items-center">
+<div class="w-6 h-3 border border-slate-900 rounded-[3px] p-[1px] flex items-center">
+<div class="h-full w-full bg-slate-900 rounded-[1px]"></div>
+</div>
+<div class="w-[2px] h-[5px] bg-slate-900 rounded-r-sm"></div>
+</div>
+</div>
+</div>
+<!-- App Bar Navigation -->
+<nav class="relative flex items-center justify-between h-14 mt-1" data-purpose="app-bar">
+<!-- Back Navigation Button -->
+<button aria-label="Back" class="p-2 -ml-2 rounded-full hover:bg-slate-100 active:bg-slate-200 transition-colors text-slate-700" type="button">
+<svg class="w-6 h-6 stroke-current" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" viewbox="0 0 24 24">
+<polyline points="15 18 9 12 15 6"></polyline>
+</svg>
+</button>
+<!-- Centered Screen Title -->
+<h1 class="text-[17px] font-semibold text-slate-900 tracking-tight absolute inset-x-0 mx-auto w-max pointer-events-none">
+          Add Expense
+        </h1>
+<!-- Empty spacer to maintain flex balance -->
+<div class="w-8"></div>
+</nav>
+</header>
+<!-- END: TopAppSection -->
+<!-- BEGIN: MainContentForm -->
+<main class="flex-1 overflow-y-auto px-6 pt-2 pb-6 space-y-5">
+<!-- Category Selection Input -->
+<div class="space-y-1.5" data-purpose="field-group">
+<label class="block text-[13px] font-medium text-slate-700 tracking-tight" for="category-picker">
+          Category
+        </label>
+<div aria-haspopup="listbox" aria-label="Category: Food" class="flex items-center justify-between px-3.5 h-[50px] bg-white border border-slate-200 rounded-xl cursor-pointer hover:border-slate-300 transition-colors shadow-sm" id="category-picker" role="button" tabindex="0">
+<!-- Category Value & Leading Icon -->
+<div class="flex items-center space-x-3">
+<span class="text-slate-600 flex items-center justify-center">
+<!-- Spoon & Fork / Utensils Icon -->
+<svg class="w-5 h-5 text-slate-600" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24">
+<path d="M18 2v6a3 3 0 0 1-3 3 3 3 0 0 1-3-3V2"></path>
+<path d="M15 2v10"></path>
+<path d="M15 12v10"></path>
+<path d="M6 2v7a2 2 0 0 0 2 2 2 2 0 0 0 2-2V2"></path>
+<path d="M8 11v11"></path>
+</svg>
+</span>
+<span class="text-[15px] font-normal text-slate-800">Food</span>
+</div>
+<!-- Trailing Dropdown Chevron -->
+<svg class="w-4 h-4 text-slate-400" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" viewbox="0 0 24 24">
+<polyline points="6 9 12 15 18 9"></polyline>
+</svg>
+</div>
+</div>
+<!-- Amount Input (ERROR STATE) -->
+<div class="space-y-1.5" data-purpose="field-group-error">
+<label class="block text-[13px] font-medium text-slate-700 tracking-tight" for="amount-input">
+          Amount
+        </label>
+<!-- Error Border Box -->
+<div class="relative flex items-center bg-white border-1.5 border-red-500 rounded-xl shadow-sm transition-all focus-within:ring-1 focus-within:ring-red-500">
+<input aria-describedby="amount-error-msg" aria-invalid="true" class="w-full h-[50px] pl-3.5 pr-10 bg-transparent text-[15px] text-slate-900 font-normal rounded-xl border-none focus:outline-none" id="amount-input" name="amount" type="text" value="abc"/>
+<!-- Error Badge / Warning Indicator Icon -->
+<div class="absolute right-3.5 pointer-events-none text-red-500 flex items-center justify-center">
+<svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24">
+<circle cx="12" cy="12" r="9"></circle>
+<line x1="12" x2="12" y1="8" y2="12"></line>
+<line x1="12" x2="12.01" y1="16" y2="16"></line>
+</svg>
+</div>
+</div>
+<!-- Validation Error Helper Message -->
+<p class="text-[12px] font-normal text-red-500 pl-0.5 tracking-tight" id="amount-error-msg">
+          Please enter a valid number
+        </p>
+</div>
+<!-- Date Input Field -->
+<div class="space-y-1.5" data-purpose="field-group">
+<label class="block text-[13px] font-medium text-slate-700 tracking-tight" for="date-input">
+          Date
+        </label>
+<div aria-label="Date: 12 Apr 2025" class="flex items-center justify-between px-3.5 h-[50px] bg-white border border-slate-200 rounded-xl cursor-pointer hover:border-slate-300 transition-colors shadow-sm" id="date-input" role="button" tabindex="0">
+<span class="text-[15px] text-slate-800 font-normal">12 Apr 2025</span>
+<!-- Trailing Calendar Icon -->
+<svg class="w-5 h-5 text-slate-400" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" viewbox="0 0 24 24">
+<rect height="18" rx="2" ry="2" width="18" x="3" y="4"></rect>
+<line x1="16" x2="16" y1="2" y2="6"></line>
+<line x1="8" x2="8" y1="2" y2="6"></line>
+<line x1="3" x2="21" y1="10" y2="10"></line>
+</svg>
+</div>
+</div>
+<!-- Description Input Field -->
+<div class="space-y-1.5" data-purpose="field-group">
+<label class="block text-[13px] font-medium text-slate-700 tracking-tight" for="description-input">
+          Description
+        </label>
+<div class="relative bg-white border border-slate-200 rounded-xl shadow-sm focus-within:border-slate-400 transition-colors">
+<input class="w-full h-[50px] px-3.5 bg-transparent text-[15px] text-slate-800 placeholder-slate-400 rounded-xl border-none focus:outline-none" id="description-input" name="description" placeholder="e.g. Dinner at local restaurant" type="text"/>
+</div>
+</div>
+</main>
+<!-- END: MainContentForm -->
+<!-- BEGIN: BottomActionSection -->
+<footer class="w-full px-6 pt-3 pb-8 bg-[#FAFAFA] flex flex-col items-center space-y-6">
+<!-- Primary Save Button (Disabled State Due to Validation Error) -->
+<button aria-disabled="true" class="w-full h-13 py-3.5 bg-[#B7C7C2] text-white text-[16px] font-semibold rounded-xl cursor-not-allowed transition-colors select-none shadow-none flex items-center justify-center tracking-wide" data-purpose="submit-expense-button" disabled="" type="button">
+        Save Expense
+      </button>
+<!-- iOS Home Indicator -->
+<div class="w-36 h-[5px] bg-slate-900/80 rounded-full mx-auto -mb-2" data-purpose="home-indicator"></div>
+</footer>
+<!-- END: BottomActionSection -->
+</div>
+<!-- END: MobileDeviceFrame -->
+</body></html>

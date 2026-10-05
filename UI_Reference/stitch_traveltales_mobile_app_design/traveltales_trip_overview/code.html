@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, viewport-fit=cover" name="viewport"/>
+<title>TravelTales - Trip Overview</title>
+<!-- Load Tailwind CSS v3 with forms & container queries plugins -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              teal: '#1B4D3E',
+              'teal-dark': '#143C30',
+              'teal-light': '#E8F1EE',
+            },
+            bg: {
+              cream: '#FBFBFA',
+            }
+          },
+          fontFamily: {
+            sans: ['-apple-system', 'BlinkMacSystemFont', '"SF Pro Display"', '"SF Pro Text"', 'Roboto', 'sans-serif'],
+          }
+        }
+      }
+    };
+  </script>
+<!-- BEGIN: Custom Styles -->
+<style data-purpose="custom-scroll-and-shadows">
+    /* Subtle custom elevations consistent with Material 3 & modern iOS */
+    .card-shadow {
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04), 0 1px 2px rgba(0, 0, 0, 0.02);
+    }
+    .hero-shadow {
+      box-shadow: 0 4px 12px -2px rgba(0, 0, 0, 0.08);
+    }
+    /* Hide scrollbars for clean presentation */
+    ::-webkit-scrollbar {
+      display: none;
+    }
+  </style>
+<!-- END: Custom Styles -->
+</head>
+<body class="bg-gray-100 min-h-screen flex items-center justify-center p-0 md:p-6 font-sans antialiased text-gray-800 selection:bg-brand-teal selection:text-white">
+<!-- BEGIN: Phone Frame Container (390px x 844px Mobile Viewport) -->
+<main class="w-full max-w-[390px] h-[844px] bg-[#FBFBFA] flex flex-col relative overflow-hidden shadow-2xl rounded-none md:rounded-[44px] border border-gray-200" data-purpose="mobile-viewport">
+<!-- BEGIN: iOS Status Bar -->
+<header class="w-full pt-3 px-6 pb-2 flex justify-between items-center text-xs font-semibold select-none z-20 shrink-0" data-purpose="status-bar">
+<!-- Time -->
+<span class="tracking-tight text-gray-900 font-semibold text-[14px]">9:41</span>
+<!-- System Icons: Cellular, Wi-Fi, Battery -->
+<div class="flex items-center space-x-1.5 text-gray-900">
+<!-- Cellular Icon -->
+<svg class="w-4 h-3.5 fill-current" viewbox="0 0 17 12">
+<rect height="4" rx="0.5" width="2.5" x="0" y="8"></rect>
+<rect height="6.5" rx="0.5" width="2.5" x="4.5" y="5.5"></rect>
+<rect height="9" rx="0.5" width="2.5" x="9" y="3"></rect>
+<rect height="11.5" rx="0.5" width="2.5" x="13.5" y="0.5"></rect>
+</svg>
+<!-- Wi-Fi Icon -->
+<svg class="w-3.5 h-3.5 fill-current" viewbox="0 0 16 12">
+<path d="M8 2.5C10.5 2.5 12.8 3.5 14.5 5.2L16 3.7C13.9 1.6 11.1 0.5 8 0.5C4.9 0.5 2.1 1.6 0 3.7L1.5 5.2C3.2 3.5 5.5 2.5 8 2.5ZM8 6.5C9.7 6.5 11.2 7.2 12.3 8.3L13.8 6.8C12.3 5.3 10.2 4.5 8 4.5C5.8 4.5 3.7 5.3 2.2 6.8L3.7 8.3C4.8 7.2 6.3 6.5 8 6.5ZM8 10C8.8 10 9.5 10.7 9.5 11.5C9.5 12.3 8.8 13 8 13C7.2 13 6.5 12.3 6.5 11.5C6.5 10.7 7.2 10 8 10Z"></path>
+</svg>
+<!-- Battery Icon -->
+<svg class="w-5 h-3 fill-current" viewbox="0 0 24 12">
+<rect fill="none" height="11" rx="2.5" stroke="currentColor" width="20" x="0.5" y="0.5"></rect>
+<rect height="8" rx="1.5" width="13" x="2" y="2"></rect>
+<path d="M22 4.5V7.5" stroke="currentColor" stroke-linecap="round" stroke-width="1.2"></path>
+</svg>
+</div>
+</header>
+<!-- END: iOS Status Bar -->
+<!-- BEGIN: Top Navigation App Bar -->
+<nav class="px-4 py-2 flex items-center justify-between z-10 shrink-0" data-purpose="app-bar">
+<!-- Back Button -->
+<button aria-label="Go back" class="w-10 h-10 -ml-1 rounded-full flex items-center justify-center text-gray-700 hover:bg-gray-200/50 transition-colors">
+<svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2.2" viewbox="0 0 24 24">
+<path d="M15 19l-7-7 7-7" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</button>
+<!-- Center Title & Subtitle Info -->
+<div class="flex-1 text-center">
+<h1 class="text-[17px] font-bold text-gray-900 tracking-tight leading-tight">Bali Adventure</h1>
+<p class="text-[11px] font-medium text-gray-500 tracking-normal mt-0.5">12 Apr - 20 Apr 2025 · 8 days</p>
+</div>
+<!-- Action Button (Trip Options/More) -->
+<button aria-label="More options" class="w-10 h-10 -mr-1 rounded-full flex items-center justify-center text-gray-700 hover:bg-gray-200/50 transition-colors">
+<svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24">
+<circle cx="12" cy="12" fill="currentColor" r="1.2"></circle>
+<circle cx="19" cy="12" fill="currentColor" r="1.2"></circle>
+<circle cx="5" cy="12" fill="currentColor" r="1.2"></circle>
+</svg>
+</button>
+</nav>
+<!-- END: Top Navigation App Bar -->
+<!-- BEGIN: Scrollable Content Body -->
+<div class="flex-1 overflow-y-auto px-4 pb-20 space-y-4" data-purpose="screen-content">
+<!-- BEGIN: Hero Image Card -->
+<div class="w-full h-40 rounded-2xl overflow-hidden relative hero-shadow border border-[#ECEEED]" data-purpose="trip-hero-image">
+<img alt="Bali Destination - Nusa Penida Kelingking Beach cliffs and turquoise sea" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBV4wRBx2mE-UkuCIUpvgyFVfsXjlgnBXg4lGAzjDr-WElR6OT44oz6jACVdca2krxWd3kcKLYnr0OmRU5egXe2yeaRac5NFeIzLg_Ec_R7B5bY4FseMWFASpfQP3ERkP9Rxev3HQyBd0HcCiPBYZm34L8dWPDJb6O__UFVKI3jWSgHn8VkOX8FpVpQIMHAO1U88KQz4D4F7xRSu_Dyfa9zVGvlgvxRK8b2YNe525Gf0xl1Oli6c9m-DA"/>
+</div>
+<!-- END: Hero Image Card -->
+<!-- BEGIN: Trip Summary Stats Grid (2x2) -->
+<section aria-label="Trip Statistics" data-purpose="trip-stats-grid">
+<div class="grid grid-cols-2 gap-3">
+<!-- Stat 1: Activities -->
+<article class="bg-white rounded-2xl p-3.5 border border-[#ECEEED] card-shadow flex flex-col items-center justify-center text-center">
+<span class="text-[20px] font-bold text-gray-900 tracking-tight">5</span>
+<span class="text-xs font-medium text-gray-500 mt-0.5">Activities</span>
+</article>
+<!-- Stat 2: Total Expenses -->
+<article class="bg-white rounded-2xl p-3.5 border border-[#ECEEED] card-shadow flex flex-col items-center justify-center text-center">
+<span class="text-[20px] font-bold text-gray-900 tracking-tight">₹ 24,500</span>
+<span class="text-xs font-medium text-gray-500 mt-0.5">Total Expenses</span>
+</article>
+<!-- Stat 3: Guides -->
+<article class="bg-white rounded-2xl p-3.5 border border-[#ECEEED] card-shadow flex flex-col items-center justify-center text-center">
+<span class="text-[20px] font-bold text-gray-900 tracking-tight">3</span>
+<span class="text-xs font-medium text-gray-500 mt-0.5">Guides</span>
+</article>
+<!-- Stat 4: Days Left -->
+<article class="bg-white rounded-2xl p-3.5 border border-[#ECEEED] card-shadow flex flex-col items-center justify-center text-center">
+<span class="text-[20px] font-bold text-gray-900 tracking-tight">8</span>
+<span class="text-xs font-medium text-gray-500 mt-0.5">Days Left</span>
+</article>
+</div>
+</section>
+<!-- END: Trip Summary Stats Grid -->
+<!-- BEGIN: Quick Access Section -->
+<section aria-label="Quick Access Features" class="pt-1" data-purpose="quick-access-section">
+<h2 class="text-[14px] font-semibold text-gray-900 tracking-tight mb-2.5">Quick Access</h2>
+<!-- Quick Access 2x2 Grid -->
+<div class="grid grid-cols-2 gap-3">
+<!-- Action Card 1: Itinerary -->
+<button class="bg-white rounded-2xl p-3.5 border border-[#ECEEED] card-shadow flex items-center space-x-3 text-left hover:bg-gray-50 transition-colors group">
+<div class="w-8 h-8 rounded-xl bg-brand-teal-light flex items-center justify-center text-brand-teal group-hover:bg-brand-teal group-hover:text-white transition-colors shrink-0">
+<!-- Calendar / Schedule Icon -->
+<svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24">
+<rect height="18" rx="2" stroke-linecap="round" width="18" x="3" y="4"></rect>
+<path d="M16 2v4M8 2v4M3 10h18" stroke-linecap="round"></path>
+</svg>
+</div>
+<span class="text-[13px] font-semibold text-gray-800">Itinerary</span>
+</button>
+<!-- Action Card 2: Expenses -->
+<button class="bg-white rounded-2xl p-3.5 border border-[#ECEEED] card-shadow flex items-center space-x-3 text-left hover:bg-gray-50 transition-colors group">
+<div class="w-8 h-8 rounded-xl bg-brand-teal-light flex items-center justify-center text-brand-teal group-hover:bg-brand-teal group-hover:text-white transition-colors shrink-0">
+<!-- Wallet / Expenses Icon -->
+<svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24">
+<rect height="13" rx="2" stroke-linecap="round" width="20" x="2" y="6"></rect>
+<path d="M6 6V4a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v2" stroke-linecap="round"></path>
+<circle cx="16" cy="12.5" fill="currentColor" r="1.25"></circle>
+</svg>
+</div>
+<span class="text-[13px] font-semibold text-gray-800">Expenses</span>
+</button>
+<!-- Action Card 3: Local Guides -->
+<button class="bg-white rounded-2xl p-3.5 border border-[#ECEEED] card-shadow flex items-center space-x-3 text-left hover:bg-gray-50 transition-colors group">
+<div class="w-8 h-8 rounded-xl bg-brand-teal-light flex items-center justify-center text-brand-teal group-hover:bg-brand-teal group-hover:text-white transition-colors shrink-0">
+<!-- Compass / Explore Guides Icon -->
+<svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24">
+<circle cx="12" cy="12" r="9"></circle>
+<path d="m15.5 8.5-2.5 6-4.5 1 2.5-6 4.5-1z" stroke-linejoin="round"></path>
+</svg>
+</div>
+<span class="text-[13px] font-semibold text-gray-800">Local Guides</span>
+</button>
+<!-- Action Card 4: Maps -->
+<button class="bg-white rounded-2xl p-3.5 border border-[#ECEEED] card-shadow flex items-center space-x-3 text-left hover:bg-gray-50 transition-colors group">
+<div class="w-8 h-8 rounded-xl bg-brand-teal-light flex items-center justify-center text-brand-teal group-hover:bg-brand-teal group-hover:text-white transition-colors shrink-0">
+<!-- Map Pin / Location Icon -->
+<svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24">
+<path d="M12 21s7-4.35 7-10a7 7 0 1 0-14 0c0 5.65 7 10 7 10z" stroke-linecap="round" stroke-linejoin="round"></path>
+<circle cx="12" cy="11" r="2.5"></circle>
+</svg>
+</div>
+<span class="text-[13px] font-semibold text-gray-800">Maps</span>
+</button>
+</div>
+</section>
+<!-- END: Quick Access Section -->
+</div>
+<!-- END: Scrollable Content Body -->
+<!-- BEGIN: Bottom Navigation Bar -->
+<nav class="absolute bottom-0 inset-x-0 bg-white/95 backdrop-blur-md border-t border-gray-100 flex flex-col pt-2 pb-5 px-3 z-30" data-purpose="bottom-navigation">
+<!-- 5 Tab Destinations -->
+<div class="grid grid-cols-5 items-center justify-items-center">
+<!-- Tab 1: Home (Active) -->
+<a class="flex flex-col items-center justify-center group w-full text-brand-teal" href="#home">
+<div class="w-6 h-6 flex items-center justify-center">
+<!-- Home Icon (Active Solid Fill) -->
+<svg class="w-5 h-5 fill-current" viewbox="0 0 20 20">
+<path d="m10 2.2 7 5.8v10a1 1 0 0 1-1 1h-4v-5H8v5H4a1 1 0 0 1-1-1v-10l7-5.8z"></path>
+</svg>
+</div>
+<span class="text-[10px] font-semibold tracking-tight mt-1 text-brand-teal">Home</span>
+</a>
+<!-- Tab 2: Itinerary -->
+<a class="flex flex-col items-center justify-center group w-full text-gray-400 hover:text-gray-600 transition-colors" href="#itinerary">
+<div class="w-6 h-6 flex items-center justify-center">
+<!-- Itinerary / Notebook Icon -->
+<svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.8" viewbox="0 0 24 24">
+<rect height="18" rx="2" width="16" x="4" y="3"></rect>
+<path d="M9 8h6M9 12h6M9 16h4" stroke-linecap="round"></path>
+</svg>
+</div>
+<span class="text-[10px] font-medium tracking-tight mt-1">Itinerary</span>
+</a>
+<!-- Tab 3: Expenses -->
+<a class="flex flex-col items-center justify-center group w-full text-gray-400 hover:text-gray-600 transition-colors" href="#expenses">
+<div class="w-6 h-6 flex items-center justify-center">
+<!-- Expenses / Wallet Icon -->
+<svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.8" viewbox="0 0 24 24">
+<rect height="13" rx="2" width="20" x="2" y="6"></rect>
+<path d="M6 6V4a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v2"></path>
+<circle cx="16" cy="12.5" fill="currentColor" r="1"></circle>
+</svg>
+</div>
+<span class="text-[10px] font-medium tracking-tight mt-1">Expenses</span>
+</a>
+<!-- Tab 4: Guides -->
+<a class="flex flex-col items-center justify-center group w-full text-gray-400 hover:text-gray-600 transition-colors" href="#guides">
+<div class="w-6 h-6 flex items-center justify-center">
+<!-- Guides / Compass Icon -->
+<svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.8" viewbox="0 0 24 24">
+<circle cx="12" cy="12" r="9"></circle>
+<path d="m15 9-2.2 5.3-5.3 2.2 2.2-5.3L15 9z" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</div>
+<span class="text-[10px] font-medium tracking-tight mt-1">Guides</span>
+</a>
+<!-- Tab 5: Maps -->
+<a class="flex flex-col items-center justify-center group w-full text-gray-400 hover:text-gray-600 transition-colors" href="#maps">
+<div class="w-6 h-6 flex items-center justify-center">
+<!-- Maps / Pin Icon -->
+<svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.8" viewbox="0 0 24 24">
+<path d="M12 21s7-4.35 7-10a7 7 0 1 0-14 0c0 5.65 7 10 7 10z" stroke-linecap="round" stroke-linejoin="round"></path>
+<circle cx="12" cy="11" r="2.5"></circle>
+</svg>
+</div>
+<span class="text-[10px] font-medium tracking-tight mt-1">Maps</span>
+</a>
+</div>
+<!-- iOS Home Indicator Pill -->
+<div class="w-32 h-1 bg-gray-300 rounded-full mx-auto mt-3.5 mb-0.5"></div>
+</nav>
+<!-- END: Bottom Navigation Bar -->
+</main>
+<!-- END: Phone Frame Container -->
+</body></html>

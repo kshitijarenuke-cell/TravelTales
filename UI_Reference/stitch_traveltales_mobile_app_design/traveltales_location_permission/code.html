@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>TravelTales - Location Permission</title>
+<!-- Tailwind CSS CDN with forms & container queries plugins -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Tailwind Custom Configuration -->
+<script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              teal: '#1B4D3E',
+              'teal-dark': '#13392E',
+              'teal-light': '#E9F2EF',
+              'teal-soft': '#D3E5DF'
+            },
+            charcoal: '#1E293B',
+            muted: '#64748B',
+            surface: '#F8FAFC'
+          },
+          fontFamily: {
+            sans: ['-apple-system', 'BlinkMacSystemFont', '"SF Pro Display"', '"SF Pro Text"', '"Plus Jakarta Sans"', 'Inter', 'sans-serif']
+          },
+          boxShadow: {
+            'subtle': '0 8px 30px rgba(27, 77, 62, 0.08)',
+            'btn': '0 4px 14px rgba(27, 77, 62, 0.22)'
+          }
+        }
+      }
+    };
+  </script>
+<!-- CSS Styles for Layout & Device Frame -->
+<style data-purpose="layout">
+    body {
+      background-color: #ECEFF1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Plus Jakarta Sans", Inter, sans-serif;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* Target iPhone Screen Container */
+    .mobile-viewport {
+      width: 390px;
+      height: 844px;
+      max-width: 100%;
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      box-shadow: 0 25px 60px -15px rgba(0, 0, 0, 0.2);
+    }
+  </style>
+</head>
+<body class="p-0 sm:p-4">
+<!-- BEGIN: MobileContainer -->
+<main class="mobile-viewport bg-[#FAFCFB] rounded-none sm:rounded-[48px] border-0 sm:border-[8px] sm:border-[#1E293B] flex flex-col justify-between" data-purpose="screen-container">
+<!-- BEGIN: iOSStatusBar -->
+<header class="pt-3 px-7 flex justify-between items-center z-20 select-none text-charcoal" data-purpose="status-bar">
+<!-- Time Display -->
+<span class="text-[15px] font-semibold tracking-tight">9:41</span>
+<!-- Right Status Indicators (Cellular, Wifi, Battery) -->
+<div class="flex items-center space-x-1.5">
+<!-- Cellular Signal Icon -->
+<svg class="w-4 h-3.5 fill-current" viewbox="0 0 17 12">
+<path d="M1 9h2a1 1 0 0 1 1 1v1a1 1 0 0 1-1 1H1a1 1 0 0 1-1-1v-1a1 1 0 0 1 1-1Zm4.5-3h2a1 1 0 0 1 1 1v4a1 1 0 0 1-1 1h-2a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1Zm4.5-3h2a1 1 0 0 1 1 1v7a1 1 0 0 1-1 1h-2a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1Zm4.5-3h2a1 1 0 0 1 1 1v10a1 1 0 0 1-1 1h-2a1 1 0 0 1-1-1V1a1 1 0 0 1 1-1Z"></path>
+</svg>
+<!-- Wi-Fi Icon -->
+<svg class="w-4 h-3.5 fill-current ml-0.5" viewbox="0 0 16 12">
+<path d="M8 2.5a10.96 10.96 0 0 1 6.8 2.37.75.75 0 0 1-.04 1.13L13.1 7.42a.75.75 0 0 1-.98-.05A7.47 7.47 0 0 0 8 5.5a7.47 7.47 0 0 0-4.12 1.87.75.75 0 0 1-.98.05L1.24 6a.75.75 0 0 1-.04-1.13A10.96 10.96 0 0 1 8 2.5ZM8 7a5.5 5.5 0 0 1 3.5 1.25.75.75 0 0 1-.06 1.17l-3.08 2.57a.5.5 0 0 1-.72 0L4.56 9.42a.75.75 0 0 1-.06-1.17A5.5 5.5 0 0 1 8 7Z"></path>
+</svg>
+<!-- Battery Icon -->
+<div class="w-6 h-3 border border-charcoal/80 rounded-[3.5px] p-0.5 flex items-center ml-0.5 relative">
+<div class="h-full bg-charcoal rounded-[1.5px] w-full"></div>
+<div class="absolute -right-1 top-1 w-0.5 h-1 bg-charcoal/80 rounded-r-sm"></div>
+</div>
+</div>
+</header>
+<!-- END: iOSStatusBar -->
+<!-- BEGIN: MainContent -->
+<section class="flex-1 flex flex-col justify-center items-center px-8 text-center -mt-6" data-purpose="permission-dialog">
+<!-- Graphic Illustration: Stylized Folded Map & Location Pin -->
+<div class="relative w-44 h-44 mb-8 flex items-center justify-center" data-purpose="illustration-wrapper">
+<!-- Soft Circular Background Glow -->
+<div class="absolute inset-0 rounded-full bg-brand-teal-light/60 scale-105"></div>
+<div class="absolute inset-4 rounded-full bg-brand-teal-soft/30 blur-sm"></div>
+<!-- Map & Pin Custom SVG Illustration -->
+<svg class="relative z-10 w-28 h-28 text-brand-teal drop-shadow-sm" fill="none" viewbox="0 0 112 112" xmlns="http://www.w3.org/2000/svg">
+<!-- Folded Map Base -->
+<g stroke="#1B4D3E" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.6">
+<!-- Left Panel -->
+<path d="M22 36L44 26V82L22 92V36Z" fill="#F0F7F4"></path>
+<!-- Middle Panel -->
+<path d="M44 26L68 36V92L44 82V26Z" fill="#E2EEE9"></path>
+<!-- Right Panel -->
+<path d="M68 36L90 26V82L68 92V36Z" fill="#F0F7F4"></path>
+<!-- Map Detail Contour Lines (Soft accents) -->
+<path d="M28 48C34 50 38 46 44 47" opacity="0.6" stroke="#1B4D3E" stroke-dasharray="2 3" stroke-width="1.8"></path>
+<path d="M72 70C78 68 82 72 86 70" opacity="0.6" stroke="#1B4D3E" stroke-dasharray="2 3" stroke-width="1.8"></path>
+</g>
+<!-- Location Pin Shadow on Map -->
+<ellipse cx="56" cy="62" fill="#13392E" opacity="0.18" rx="9" ry="3.5"></ellipse>
+<!-- Location Pin Marker -->
+<g filter="drop-shadow(0px 4px 6px rgba(27, 77, 62, 0.25))">
+<!-- Pin Outer Body -->
+<path d="M56 22C47.7157 22 41 28.7157 41 37C41 47.5 56 61 56 61C56 61 71 47.5 71 37C71 28.7157 64.2843 22 56 22Z" fill="#1B4D3E" stroke="#FFFFFF" stroke-linejoin="round" stroke-width="2.2"></path>
+<!-- Pin Inner Dot -->
+<circle cx="56" cy="36.5" fill="#FFFFFF" r="4.5"></circle>
+</g>
+</svg>
+</div>
+<!-- Headline -->
+<h1 class="text-[23px] font-bold tracking-tight text-charcoal mb-3 leading-snug">
+        Allow Location Access
+      </h1>
+<!-- Subtitle Description -->
+<p class="text-[14.5px] leading-relaxed text-muted max-w-[270px]">
+        We need your location to show nearby places and guides.
+      </p>
+</section>
+<!-- END: MainContent -->
+<!-- BEGIN: ActionControls -->
+<footer class="px-7 pb-4 flex flex-col items-center gap-3.5 z-20" data-purpose="button-actions">
+<!-- Primary Allow Button -->
+<button class="w-full h-[52px] bg-brand-teal hover:bg-brand-teal-dark active:scale-[0.985] transition-all duration-150 rounded-[14px] text-white text-[16px] font-semibold shadow-btn flex items-center justify-center tracking-wide" data-purpose="allow-button" type="button">
+        Allow
+      </button>
+<!-- Secondary "Not Now" Button -->
+<button class="w-full py-2.5 text-center text-muted hover:text-charcoal active:opacity-70 transition-colors text-[14.5px] font-medium" data-purpose="dismiss-button" type="button">
+        Not Now
+      </button>
+<!-- iOS Home Indicator -->
+<div class="pt-2 pb-1 flex justify-center w-full" data-purpose="home-indicator">
+<div class="w-32 h-[4px] bg-charcoal/25 rounded-full"></div>
+</div>
+</footer>
+<!-- END: ActionControls -->
+</main>
+<!-- END: MobileContainer -->
+</body></html>

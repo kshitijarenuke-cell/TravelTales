@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>TravelTales - Card Design (Item 20)</title>
+<!-- Tailwind CSS CDN with forms and container queries plugins -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              teal: '#1B4D3E',
+              'teal-dark': '#143B30',
+              'teal-light': '#E9F1EF'
+            },
+            neutral: {
+              app: '#F6F8F7',
+              surface: '#FFFFFF',
+              charcoal: '#1E293B',
+              muted: '#64748B',
+              divider: '#E2E8F0'
+            }
+          },
+          fontFamily: {
+            sans: ['-apple-system', 'BlinkMacSystemFont', '"SF Pro Display"', '"SF Pro Text"', 'Inter', 'sans-serif'],
+          },
+          boxShadow: {
+            'card-elevated': '0 12px 32px -4px rgba(27, 77, 62, 0.08), 0 4px 12px -2px rgba(0, 0, 0, 0.04)',
+            'btn-shadow': '0 4px 14px 0 rgba(27, 77, 62, 0.28)'
+          }
+        }
+      }
+    };
+  </script>
+<!-- Layout styling -->
+<style data-purpose="viewport-styling">
+    body {
+      background-color: #ECEFEF;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      margin: 0;
+      padding: 20px 0;
+      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, sans-serif;
+      -webkit-font-smoothing: antialiased;
+    }
+    .mobile-frame {
+      width: 390px;
+      height: 844px;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 25px 60px -15px rgba(0, 0, 0, 0.2);
+    }
+  </style>
+</head>
+<body>
+<!-- BEGIN: MobileContainer -->
+<div class="mobile-frame bg-neutral-app rounded-[52px] border-[8px] border-slate-900/90 flex flex-col justify-between select-none">
+<!-- BEGIN: iOSStatusBar -->
+<header class="w-full pt-3 px-7 flex justify-between items-center z-30 shrink-0 text-slate-800">
+<!-- Time Display -->
+<span class="text-[15px] font-semibold tracking-tight">9:41</span>
+<!-- Dynamic Island / Speaker Notch Indicator -->
+<div class="w-28 h-5 bg-black/5 rounded-full absolute left-1/2 -translate-x-1/2 top-3 pointer-events-none"></div>
+<!-- Device Status Icons -->
+<div class="flex items-center space-x-1.5">
+<!-- Cellular Signal Icon -->
+<svg class="w-4 h-3.5 fill-current" viewbox="0 0 17 12">
+<rect height="3" rx="0.6" width="2.5" x="0" y="9"></rect>
+<rect height="6" rx="0.6" width="2.5" x="4.5" y="6"></rect>
+<rect height="9" rx="0.6" width="2.5" x="9" y="3"></rect>
+<rect height="12" rx="0.6" width="2.5" x="13.5" y="0"></rect>
+</svg>
+<!-- Wi-Fi Icon -->
+<svg class="w-4 h-3.5 fill-current" viewbox="0 0 16 12">
+<path clip-rule="evenodd" d="M8 2.2C10.5 2.2 12.8 3.1 14.6 4.6L16 3C13.8 1.1 11 0 8 0C5 0 2.2 1.1 0 3L1.4 4.6C3.2 3.1 5.5 2.2 8 2.2ZM8 6.4C9.6 6.4 11 7 12.1 8L13.5 6.5C12.1 5.2 10.1 4.4 8 4.4C5.9 4.4 3.9 5.2 2.5 6.5L3.9 8C5 7 6.4 6.4 8 6.4ZM8 10.6C8.8 10.6 9.5 11 10.1 11.6L8 14L5.9 11.6C6.5 11 7.2 10.6 8 10.6Z" fill-rule="evenodd"></path>
+</svg>
+<!-- Battery Icon -->
+<div class="flex items-center">
+<div class="w-6 h-3 rounded-[3.5px] border border-current p-0.5 flex items-center">
+<div class="h-full w-4/5 bg-current rounded-[1.5px]"></div>
+</div>
+<div class="w-0.5 h-1.5 bg-current rounded-r-sm -ml-px"></div>
+</div>
+</div>
+</header>
+<!-- END: iOSStatusBar -->
+<!-- BEGIN: MainContentArea -->
+<main class="flex-1 flex flex-col justify-center px-4 py-3 z-10 overflow-y-auto">
+<!-- BEGIN: RealisticCardComponent -->
+<article class="bg-neutral-surface rounded-[28px] overflow-hidden border border-slate-100 shadow-card-elevated flex flex-col" data-purpose="trip-detail-card">
+<!-- Top Media Container (ClipRRect style Hero Image) -->
+<div class="relative w-full h-[230px] overflow-hidden">
+<!-- Bali Uluwatu / Coastal Cliffs Image -->
+<img alt="Scenic coastal cliffs of Bali with ocean views" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCC5MxhdOAeRKC2-eyfWC6-64cHF_tUNdcitbcCpN8PY4Un5dO3l9z_LHhSgRxyqNqhXkXMrG-ptmxoQhierwK2_YZ-bq_hgN28iDB4ZYLTe1zDhgzrwZsOku3gnHN6SHMlr3BgwFS_UW5s9pI1DgO6p0uAOuPWsHv63jiNieHb7xMylGXz67_MUZF3jQ67sTJnUNU5iZmuNfjal_QDQaJ2YZPjYsbB4ee2aSVA0XrkiUN1nI3V0waTqw"/>
+<!-- Gradient Overlays for readable text & icons -->
+<div class="absolute inset-0 bg-gradient-to-t from-black/75 via-black/20 to-black/35 pointer-events-none"></div>
+<!-- Top Floating Actions Navigation Bar -->
+<div class="absolute top-3.5 inset-x-3.5 flex justify-between items-center z-10">
+<!-- Back Button -->
+<button aria-label="Go back" class="w-9 h-9 rounded-full bg-white/85 backdrop-blur-md flex items-center justify-center text-slate-800 shadow-sm active:scale-95 transition-transform" data-purpose="action-back" type="button">
+<svg class="w-4 h-4 stroke-[2.5]" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+<path d="M15 19l-7-7 7-7" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</button>
+<!-- Bookmark / Save Button -->
+<button aria-label="Save trip" class="w-9 h-9 rounded-full bg-white/85 backdrop-blur-md flex items-center justify-center text-slate-800 shadow-sm active:scale-95 transition-transform" data-purpose="action-bookmark" type="button">
+<svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.2" viewbox="0 0 24 24">
+<path d="M5 5a2 2 0 012-2h10a2 2 0 012 2v16l-7-3.5L5 21V5z" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</button>
+</div>
+<!-- Trip Title & Destination Info Overlay (matching Screen 20) -->
+<div class="absolute bottom-4 left-4 right-4 z-10 text-white">
+<h2 class="text-2xl font-bold tracking-tight leading-snug drop-shadow-sm">Bali Adventure</h2>
+<div class="flex items-center space-x-1.5 mt-0.5 text-xs text-white/90 font-medium">
+<span class="inline-flex items-center">
+<svg class="w-3.5 h-3.5 mr-1 opacity-90" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+<path d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+                8 days
+              </span>
+<span class="text-white/60">•</span>
+<span class="inline-flex items-center">
+<svg class="w-3.5 h-3.5 mr-1 opacity-90" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+<path d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+                Indonesia
+              </span>
+</div>
+</div>
+</div>
+<!-- Card Body: Metrics Row & Action CTA -->
+<div class="p-4 flex flex-col space-y-4">
+<!-- Summary Metrics 3-Column Grid -->
+<div class="grid grid-cols-3 gap-2.5" data-purpose="trip-stats-grid">
+<!-- Stat 1: Activities -->
+<div class="bg-neutral-50 border border-slate-100/90 rounded-2xl py-2.5 px-1.5 text-center flex flex-col items-center justify-center">
+<span class="text-base font-bold text-neutral-charcoal leading-none">5</span>
+<div class="flex items-center space-x-1 mt-1">
+<svg class="w-3 h-3 text-brand-teal" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+<path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2"></path>
+</svg>
+<span class="text-[11px] font-medium text-neutral-muted leading-tight">Activities</span>
+</div>
+</div>
+<!-- Stat 2: Guides -->
+<div class="bg-neutral-50 border border-slate-100/90 rounded-2xl py-2.5 px-1.5 text-center flex flex-col items-center justify-center">
+<span class="text-base font-bold text-neutral-charcoal leading-none">3</span>
+<div class="flex items-center space-x-1 mt-1">
+<svg class="w-3 h-3 text-brand-teal" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+<path d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2"></path>
+</svg>
+<span class="text-[11px] font-medium text-neutral-muted leading-tight">Guides</span>
+</div>
+</div>
+<!-- Stat 3: Total Expenses -->
+<div class="bg-neutral-50 border border-slate-100/90 rounded-2xl py-2.5 px-1.5 text-center flex flex-col items-center justify-center">
+<span class="text-base font-bold text-neutral-charcoal leading-none">₹ 24,500</span>
+<div class="flex items-center space-x-1 mt-1">
+<svg class="w-3 h-3 text-brand-teal" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+<path d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2"></path>
+</svg>
+<span class="text-[11px] font-medium text-neutral-muted leading-tight">Total</span>
+</div>
+</div>
+</div>
+<!-- Primary View Trip Button -->
+<button class="w-full bg-brand-teal hover:bg-brand-teal-dark active:scale-[0.985] text-white font-semibold text-sm py-3.5 px-4 rounded-xl shadow-btn-shadow transition-all duration-150 flex items-center justify-center space-x-1.5" data-purpose="view-trip-button" type="button">
+<span>View Trip</span>
+<svg class="w-4 h-4 ml-0.5" fill="none" stroke="currentColor" stroke-width="2.2" viewbox="0 0 24 24">
+<path d="M9 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</button>
+</div>
+</article>
+<!-- END: RealisticCardComponent -->
+</main>
+<!-- END: MainContentArea -->
+<!-- BEGIN: iOSHomeIndicator -->
+<footer class="w-full pb-2.5 pt-1.5 flex justify-center shrink-0 z-30">
+<div class="w-32 h-1 bg-slate-900/30 rounded-full"></div>
+</footer>
+<!-- END: iOSHomeIndicator -->
+</div>
+<!-- END: MobileContainer -->
+</body></html>

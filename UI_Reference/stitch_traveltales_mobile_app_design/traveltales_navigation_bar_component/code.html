@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>TravelTales - Navigation Bar Component</title>
+<!-- Tailwind CSS v3 with forms and container queries -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              DEFAULT: '#1B4D3E',
+              dark: '#13392E',
+              light: '#EAF3F0',
+              accent: '#2A725D',
+            },
+            surface: {
+              light: '#F8FAFC',
+              card: '#FFFFFF',
+              border: '#E2E8F0',
+            }
+          },
+          fontFamily: {
+            sans: ['-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'Helvetica', 'Arial', 'sans-serif'],
+          },
+          boxShadow: {
+            'nav-bar': '0 -4px 20px -2px rgba(15, 23, 42, 0.05)',
+            'card-soft': '0 10px 25px -5px rgba(27, 77, 62, 0.05), 0 8px 10px -6px rgba(27, 77, 62, 0.03)',
+          }
+        }
+      }
+    }
+  </script>
+<!-- Core layout and iOS device framing styles -->
+<style data-purpose="device-framing">
+    body {
+      background-color: #E2E8F0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      margin: 0;
+      padding: 24px;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* Screen dimension constraints mirroring iOS reference (390 x 844) */
+    .mobile-frame {
+      width: 390px;
+      height: 844px;
+      max-height: 844px;
+      background-color: #F8FAFC;
+      border-radius: 44px;
+      box-shadow: 0 25px 60px -15px rgba(15, 23, 42, 0.25), 0 0 0 10px #1E293B;
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+  </style>
+<!-- Component interactive and animation styles -->
+<style data-purpose="component-styles">
+    .nav-item-active {
+      color: #1B4D3E;
+    }
+    .nav-item-inactive {
+      color: #94A3B8;
+      transition: color 0.15s ease-in-out;
+    }
+    .nav-item-inactive:hover {
+      color: #475569;
+    }
+    .home-indicator {
+      width: 134px;
+      height: 5px;
+      background-color: #0F172A;
+      border-radius: 100px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+  </style>
+</head>
+<body>
+<!-- BEGIN: MobileDeviceContainer -->
+<main class="mobile-frame" data-purpose="ios-device-container">
+<!-- BEGIN: iOSStatusBar -->
+<header class="w-full pt-3 px-7 flex justify-between items-center z-20 select-none" data-purpose="ios-status-bar">
+<!-- Left side: Time display -->
+<span class="text-[15px] font-semibold text-slate-900 tracking-tight">9:41</span>
+<!-- Right side: System icons (Cellular, WiFi, Battery) -->
+<div class="flex items-center gap-1.5 text-slate-900">
+<!-- Cellular Signal Icon -->
+<svg aria-hidden="true" class="w-4 h-4 fill-current" viewbox="0 0 24 24">
+<path d="M2 17h3v4H2v-4zm6-5h3v9H8v-9zm6-5h3v14h-3V7zm6-5h3v19h-3V2z"></path>
+</svg>
+<!-- WiFi Icon -->
+<svg aria-hidden="true" class="w-4 h-4 fill-current" viewbox="0 0 24 24">
+<path d="M12 4C7.31 4 3.07 5.9 0 8.98L12 21 24 8.98C20.93 5.9 16.69 4 12 4zm0 3.5c3.78 0 7.22 1.47 9.81 3.88L12 18.24 2.19 11.38C4.78 8.97 8.22 7.5 12 7.5z"></path>
+</svg>
+<!-- Battery Icon -->
+<svg aria-hidden="true" class="w-6 h-4 fill-current" viewbox="0 0 28 16">
+<rect fill="none" height="12" rx="3.5" stroke="currentColor" stroke-width="2" width="22" x="1" y="2"></rect>
+<rect height="7" rx="1.5" width="13" x="3.5" y="4.5"></rect>
+<path d="M25 6v4a1.5 1.5 0 001.5-1.5v-1A1.5 1.5 0 0025 6z"></path>
+</svg>
+</div>
+</header>
+<!-- END: iOSStatusBar -->
+<!-- BEGIN: DocumentationBody -->
+<!-- Center canvas demonstrating the design system context of Screen 13 -->
+<section class="flex-1 flex flex-col justify-center items-center px-6 relative" data-purpose="spec-presentation">
+<!-- Card container providing metadata of component 13 from design sheet -->
+<article class="w-full bg-white rounded-3xl p-6 border border-slate-100 shadow-card-soft text-center flex flex-col items-center">
+<!-- Component iconography badge -->
+<div class="w-16 h-16 rounded-2xl bg-brand-light flex items-center justify-center mb-4 ring-8 ring-brand-light/40" data-purpose="component-icon">
+<svg class="w-8 h-8 text-brand" fill="none" stroke="currentColor" stroke-width="1.75" viewbox="0 0 24 24">
+<path d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25H12" stroke-linecap="round" stroke-linejoin="round"></path>
+<circle cx="18" cy="17.25" fill="#1B4D3E" r="2.25" stroke="none"></circle>
+</svg>
+</div>
+<!-- Tag badge -->
+<span class="inline-block py-1 px-3 rounded-full bg-slate-100 text-brand text-[11px] font-bold tracking-wider uppercase mb-2">
+          TravelTales Core System
+        </span>
+<!-- Screen title -->
+<h1 class="text-xl font-bold text-slate-900 tracking-tight mb-2">
+          13. Navigation Bar
+        </h1>
+<!-- Contextual description -->
+<p class="text-xs text-slate-500 leading-relaxed max-w-[240px] mb-5">
+          Shared global bottom navigation component deployed across primary application viewports.
+        </p>
+<!-- Decorative structure visualization mimicking spec diagram -->
+<div class="w-full border-t border-dashed border-slate-200 pt-4 flex justify-around items-center opacity-70">
+<div class="h-2 w-10 bg-brand/20 rounded-full"></div>
+<div class="h-2 w-10 bg-slate-200 rounded-full"></div>
+<div class="h-2 w-10 bg-slate-200 rounded-full"></div>
+<div class="h-2 w-10 bg-slate-200 rounded-full"></div>
+<div class="h-2 w-10 bg-slate-200 rounded-full"></div>
+</div>
+</article>
+<!-- Spec annotation indicator -->
+<div class="mt-8 flex items-center gap-1.5 text-xs text-slate-400 font-medium">
+<span>Persistent viewport footer</span>
+<svg class="w-3.5 h-3.5 animate-bounce" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+<path d="M19 14l-7 7m0 0l-7-7m7 7V3" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+</div>
+</section>
+<!-- END: DocumentationBody -->
+<!-- BEGIN: GlobalNavigationBar -->
+<!-- Production Bottom Navigation Bar matching TravelTales App Specifications -->
+<nav aria-label="Main Navigation" class="w-full bg-white border-t border-slate-200/90 shadow-nav-bar pt-2 pb-1 px-2 z-30 select-none" data-purpose="global-bottom-navigation">
+<!-- List of 5 main tab destinations -->
+<ul class="flex items-center justify-around h-14">
+<!-- Tab 1: Home (Active State) -->
+<li class="flex-1">
+<a aria-current="page" class="flex flex-col items-center justify-center py-1 nav-item-active" data-purpose="nav-tab-home" href="#home">
+<svg class="w-6 h-6 stroke-[1.8]" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+<path d="M2.25 12l8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+<span class="text-[11px] font-semibold mt-1 tracking-tight">Home</span>
+</a>
+</li>
+<!-- Tab 2: Itinerary (Inactive State) -->
+<li class="flex-1">
+<a class="flex flex-col items-center justify-center py-1 nav-item-inactive" data-purpose="nav-tab-itinerary" href="#itinerary">
+<svg class="w-6 h-6 stroke-[1.6]" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+<path d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 012.25-2.25h13.5A2.25 2.25 0 0121 7.5v11.25m-18 0A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75m-18 0v-7.5A2.25 2.25 0 015.25 9h13.5A2.25 2.25 0 0121 11.25v7.5" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+<span class="text-[11px] font-normal mt-1 tracking-tight">Itinerary</span>
+</a>
+</li>
+<!-- Tab 3: Expenses (Inactive State) -->
+<li class="flex-1">
+<a class="flex flex-col items-center justify-center py-1 nav-item-inactive" data-purpose="nav-tab-expenses" href="#expenses">
+<svg class="w-6 h-6 stroke-[1.6]" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+<path d="M2.25 8.25h19.5M2.25 9h19.5m-16.5 5.25h6m-6 2.25h3m-6-10.5h16.5a1.5 1.5 0 011.5 1.5v10.5a1.5 1.5 0 01-1.5 1.5H3.75A1.5 1.5 0 012.25 18V7.5a1.5 1.5 0 011.5-1.5z" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+<span class="text-[11px] font-normal mt-1 tracking-tight">Expenses</span>
+</a>
+</li>
+<!-- Tab 4: Guides (Inactive State) -->
+<li class="flex-1">
+<a class="flex flex-col items-center justify-center py-1 nav-item-inactive" data-purpose="nav-tab-guides" href="#guides">
+<svg class="w-6 h-6 stroke-[1.6]" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+<path d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+<span class="text-[11px] font-normal mt-1 tracking-tight">Guides</span>
+</a>
+</li>
+<!-- Tab 5: Maps (Inactive State) -->
+<li class="flex-1">
+<a class="flex flex-col items-center justify-center py-1 nav-item-inactive" data-purpose="nav-tab-maps" href="#maps">
+<svg class="w-6 h-6 stroke-[1.6]" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+<path d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z" stroke-linecap="round" stroke-linejoin="round"></path>
+<path d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+<span class="text-[11px] font-normal mt-1 tracking-tight">Maps</span>
+</a>
+</li>
+</ul>
+<!-- iOS Home Safe Area Indicator -->
+<div class="pt-2 pb-1 w-full" data-purpose="ios-home-indicator-wrapper">
+<div class="home-indicator"></div>
+</div>
+</nav>
+<!-- END: GlobalNavigationBar -->
+</main>
+<!-- END: MobileDeviceContainer -->
+<!-- Simple script for interactive preview demonstration -->
+<script data-purpose="tab-interaction-handling">
+    document.addEventListener('DOMContentLoaded', () => {
+      const navLinks = document.querySelectorAll('nav[data-purpose="global-bottom-navigation"] a');
+      
+      navLinks.forEach(link => {
+        link.addEventListener('click', (event) => {
+          event.preventDefault();
+          
+          // Reset all tabs to inactive styling
+          navLinks.forEach(item => {
+            item.classList.remove('nav-item-active');
+            item.classList.add('nav-item-inactive');
+            item.removeAttribute('aria-current');
+            
+            const label = item.querySelector('span');
+            if (label) {
+              label.classList.remove('font-semibold');
+              label.classList.add('font-normal');
+            }
+
+            const icon = item.querySelector('svg');
+            if (icon) {
+              icon.classList.remove('stroke-[1.8]');
+              icon.classList.add('stroke-[1.6]');
+            }
+          });
+
+          // Set clicked tab to active state
+          link.classList.remove('nav-item-inactive');
+          link.classList.add('nav-item-active');
+          link.setAttribute('aria-current', 'page');
+          
+          const activeLabel = link.querySelector('span');
+          if (activeLabel) {
+            activeLabel.classList.remove('font-normal');
+            activeLabel.classList.add('font-semibold');
+          }
+
+          const activeIcon = link.querySelector('svg');
+          if (activeIcon) {
+            activeIcon.classList.remove('stroke-[1.6]');
+            activeIcon.classList.add('stroke-[1.8]');
+          }
+        });
+      });
+    });
+  </script>
+</body></html>
